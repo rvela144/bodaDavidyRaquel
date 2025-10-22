@@ -166,5 +166,16 @@ modal.hide();
     loop: true,
     path: "img/iconos/corazon.json"
   });
+  //ANIMACION FLECHA ABAJO
 
+    let svgContainerFlechaScroll = document.querySelector('.flecha-continuar');
+
+  let animFlechaAbajo = bodymovin.loadAnimation({
+    container: svgContainerFlechaScroll,
+    renderer: 'svg',
+    loop: true,
+    path: "img/iconos/flechaAbajo.json"
+  });
+
+   animFlechaAbajo.setSpeed(0.6);
 
