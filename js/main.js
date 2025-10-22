@@ -1,10 +1,9 @@
 const overlay = document.getElementById("portadaBienvenida");
 const musica= document.getElementById("musicaFondo");
-const btnConMusica = document.getElementById("btnConMusica");
 const btnSinMusica = document.getElementById("btnSinMusica");
-const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'), {backdrop: 'static',
-  keyboard: false});
+const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'));
 let authenticado = false;
+ let player;
 /*comprobar si esta logeado */// Aquí deberías comprobar si el usuario está autenticado, por ejemplo, con cookies o localStorage
 
    
@@ -14,6 +13,9 @@ let authenticado = false;
 window.addEventListener('load', function () {
   var preloader = document.querySelector('.loader');
   var preloaderArea = document.querySelector('.cargarIcono');
+ if(!player){
+  onYouTubeIframeAPIReady();
+ }
   //oculto todo el contenido menos el icono de carga
  // Mostrar el loader
 
@@ -55,8 +57,10 @@ authenticado=sessionStorage.getItem('authenticated');
   //animFlores2.play();*/
 });
 
-let player;
+
+
 function onYouTubeIframeAPIReady() {
+  if(!player){
   player = new YT.Player('reproductor-musica-fondo', {
     height: '0',            // “oculto” (ojo con Términos de Uso)
     width:  '0',
@@ -72,12 +76,13 @@ function onYouTubeIframeAPIReady() {
     }
   });
 }
+}
 /* funcion que se ejecuta cuando se ha terminado de cargar el reproductor */
   function onPlayerReady(event) {
           event.target.setVolume(80);
 
     /** evento para cuando entras con música */
-      document.getElementById('btnConMusica').addEventListener('click',(e)=>
+     document.getElementById('btnConMusica').addEventListener('click',(e)=>
         {
           e.preventDefault();
           document.getElementById('play-pause-music').setAttribute('data-estado-music', 'play');
@@ -91,6 +96,7 @@ function onYouTubeIframeAPIReady() {
        
     });
       }
+
 
 // hacer que pare o no la musica en la img 
  document.getElementById('play-pause-music').addEventListener('click', function  (e) {
