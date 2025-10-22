@@ -1,7 +1,10 @@
 const overlay = document.getElementById("portadaBienvenida");
 const musica= document.getElementById("musicaFondo");
 const btnSinMusica = document.getElementById("btnSinMusica");
-const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'));
+const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'),{
+  backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
+  keyboard: false      // Desactiva el cierre con la tecla Escape
+});
 let authenticado = false;
  let player;
 /*comprobar si esta logeado */// Aquí deberías comprobar si el usuario está autenticado, por ejemplo, con cookies o localStorage
@@ -64,12 +67,12 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('reproductor-musica-fondo', {
     height: '0',            // “oculto” (ojo con Términos de Uso)
     width:  '0',
-    videoId: '0jyZU84wGa4', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE
+    videoId: 'Oh39tadP5Sc', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE
     playerVars: {
       autoplay: 0,
         loop: 1,
         start: 0,
-        playlist:'0jyZU84wGa4'
+        playlist:'Oh39tadP5Sc'
     },
     events: {
        onReady: onPlayerReady
@@ -96,7 +99,14 @@ function onYouTubeIframeAPIReady() {
        
     });
       }
+/*accion boton sin musica */
 
+
+       document.getElementById('btnSinMusica').addEventListener('click',(e)=>
+        {
+         cerrarPortadaBienvenida();
+       
+    });
 
 // hacer que pare o no la musica en la img 
  document.getElementById('play-pause-music').addEventListener('click', function  (e) {
