@@ -67,12 +67,12 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('reproductor-musica-fondo', {
     height: '0',            // “oculto” (ojo con Términos de Uso)
     width:  '0',
-    videoId: 'Oh39tadP5Sc', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE
+    videoId: '12CEAlpGVXM', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE
     playerVars: {
       autoplay: 0,
         loop: 1,
         start: 0,
-        playlist:'Oh39tadP5Sc'
+        playlist:'12CEAlpGVXM'
     },
     events: {
        onReady: onPlayerReady
