@@ -3,6 +3,11 @@ const musica= document.getElementById("musicaFondo");
 const btnConMusica = document.getElementById("btnConMusica");
 const btnSinMusica = document.getElementById("btnSinMusica");
 const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'));
+/*VARIABLES LOGIN */
+const loginForm = document.getElementById('loginForm');
+const passwordInput = document.getElementById('password');
+ const errorMessage = document.getElementById('errorMessage');
+const loginContainer = document.getElementById("loginContainer");
 /*MÉTODO MOSTRAR ICONO DE CARGA */
 
 window.addEventListener('load', function () {
@@ -35,7 +40,7 @@ if (preloader) {
   animLoader.destroy();
 
 
-    modal.show();
+   loginContainer.classList.remove('d-none');
   // Iniciar animaciones de portada
  // animFlores1.setSpeed(0.6);
  // animFlores1.play();
@@ -43,7 +48,20 @@ if (preloader) {
   //animFlores2.play();*/
 });
 
+loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
+        const password = passwordInput.value;
+
+        // Contraseña simulada
+        const correctPassword = 'boda123';
+
+        if (password === correctPassword) {
+          window.location.href = '/invitacion.html';  // Redirige a la página de la invitación
+        } else {
+          errorMessage.classList.remove('d-none');
+        }
+      });
 
 let player;
 function onYouTubeIframeAPIReady() {
