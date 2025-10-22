@@ -2,12 +2,13 @@ const overlay = document.getElementById("portadaBienvenida");
 const musica= document.getElementById("musicaFondo");
 const btnConMusica = document.getElementById("btnConMusica");
 const btnSinMusica = document.getElementById("btnSinMusica");
-const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'));
-/*VARIABLES LOGIN */
-const loginForm = document.getElementById('loginForm');
-const passwordInput = document.getElementById('password');
- const errorMessage = document.getElementById('errorMessage');
-const loginContainer = document.getElementById("loginContainer");
+const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'), {backdrop: 'static',
+  keyboard: false});
+let authenticado = false;
+/*comprobar si esta logeado */// Aquí deberías comprobar si el usuario está autenticado, por ejemplo, con cookies o localStorage
+
+   
+
 /*MÉTODO MOSTRAR ICONO DE CARGA */
 
 window.addEventListener('load', function () {
@@ -37,31 +38,22 @@ if (preloader) {
   }
 
   // Detener animación de carga
+
   animLoader.destroy();
+authenticado=sessionStorage.getItem('authenticated');
+ if (!authenticado) {
+      // Si no está autenticado, redirige al login.html
+      window.location.href = '/login/login.html';
+   }else{
+    modal.show()
+   }
 
-
-   loginContainer.classList.remove('d-none');
   // Iniciar animaciones de portada
  // animFlores1.setSpeed(0.6);
  // animFlores1.play();
   //animFlores2.setSpeed(0.6);
   //animFlores2.play();*/
 });
-
-loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const password = passwordInput.value;
-
-        // Contraseña simulada
-        const correctPassword = 'boda123';
-
-        if (password === correctPassword) {
-          window.location.href = '/invitacion.html';  // Redirige a la página de la invitación
-        } else {
-          errorMessage.classList.remove('d-none');
-        }
-      });
 
 let player;
 function onYouTubeIframeAPIReady() {

@@ -1,5 +1,80 @@
 /*ICONO DE CARGA*/
 /* Loader */
+:root {
+  --color-1: #BFA880;
+  --color-2: #FCF6F1;
+  --color-3: #575756;
+  --color-4: #C6D7CF;
+  --color-5: #DFEAE5;
+  --color-6: #957a4c;
+}
+
+.fancybox-bg{
+  background-color: var(--color-1) !important;
+}
+/*ESTILOS MODIFICADOS DE BOOTSTRAP MODALES*/
+.modal-backdrop {
+  /* background-color:var(--color-1); */
+  background-color:var(--color-1);
+  opacity:0.95 !important;
+}
+
+.modal-body{
+  flex: inherit;
+}
+.modal-transparent .modal-content{
+  background: transparent;
+  border: none;
+}
+
+
+.modal-transparent .close{
+  color: #fff;
+  text-shadow: none;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  outline: none;
+  padding: 0;
+}
+
+.modal-transparent .modal-header, .modal-transparent  .modal-footer{
+  border: none;
+  padding: 0;
+}
+
+.modal-transparent .modal-header h3{
+  color: #F2F2F2;
+  text-align: center;
+  width: 100%;
+ /* font-family: 'Quicksand', sans-serif;*/
+}
+
+.modal-transparent .boton{
+  padding: 15px 50px;
+}
+
+.modal .modal-content{
+  text-align: center;
+  border: none;
+  background: var(--color-2);
+  padding-bottom: 20px;
+  margin-top: 60px;
+}
+
+
+.modal .modal-body a.link {
+  text-decoration: none;
+  color: var(--color-1);
+	font-weight: 600;
+}
+
+.modal .modal-body a.link:hover {
+  text-decoration: underline;
+  color: var(--color-3);
+	font-weight: 600;
+}
+/*ESTILOS CARGAR ICONO*/
 .cargarIcono {
   position: fixed;
   background: var(--color-2);
@@ -13,7 +88,7 @@
   width: 90%;
   width: 300px;
 }
-
+/*CONTENEDOR PORTADA*/
 #portadaBienvenida .modal-content{
   background: transparent;
   border: none;
@@ -50,40 +125,6 @@
   color: #fff;
 }
 
-/*pantalla bienvenida*/
-/*.portada-bienvenida{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:1080;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: #bfa880;
-    text-align: center;
-    color: white;
-    opacity: 1;
-    transition: opacity 0.7s ease;
-}*/
-/*.portada-bienvenida.hidden{
-    opacity: 0;
-    pointer-events: none;
-}
-/*efecto al cerrar*/
-/*.portada-bienvenida.hidden{
-    opacity: 0;
-    pointer-events: none;
-}
-/**tipografia*/
-/*.portada-bienvenida h1,
-.portada-bienvenida p{
-    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
-}
 
 /*Icono animado musica*/
 .music-anim-icon{
