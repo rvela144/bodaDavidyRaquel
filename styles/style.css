@@ -1,5 +1,57 @@
+/*ICONO DE CARGA*/
+/* Loader */
+.cargarIcono {
+  position: fixed;
+  background: var(--color-2);
+  z-index: 11000;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cargarIcono .loader{
+  width: 90%;
+  width: 300px;
+}
+
+#portadaBienvenida .modal-content{
+  background: transparent;
+  border: none;
+}
+
+#portadaBienvenida .modal-content p{
+  font-size:55px;
+  line-height: 50px;
+  font-family: 'DM Serif Display', serif;
+  color:#fff;
+  display:inline-block;
+  width: 100%;
+}
+
+#portadaBienvenida .modal-content p + span{
+  font-size:22px;
+  font-family: 'Quicksand', sans-serif;
+  color:#fff;
+  font-weight: 300;
+  margin-bottom: 25px;
+  display:inline-block;
+  width: 100%;
+}
+
+#portadaBienvenida .boton{
+  font-size:14px;
+  display: inline-block;
+  background-color: var(--color-4);
+  color: var(--color-3);
+}
+
+#portadaBienvenida .boton:hover{
+  background-color: var(--color-3);
+  color: #fff;
+}
+
 /*pantalla bienvenida*/
-.portada-bienvenida{
+/*.portada-bienvenida{
     position:fixed;
     top:0;
     left:0;
@@ -12,19 +64,23 @@
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0,0,0,0.8);
+    background-color: #bfa880;
     text-align: center;
     color: white;
     opacity: 1;
     transition: opacity 0.7s ease;
+}*/
+/*.portada-bienvenida.hidden{
+    opacity: 0;
+    pointer-events: none;
 }
 /*efecto al cerrar*/
-.portada-bienvenida.hidden{
+/*.portada-bienvenida.hidden{
     opacity: 0;
     pointer-events: none;
 }
 /**tipografia*/
-.portada-bienvenida h1,
+/*.portada-bienvenida h1,
 .portada-bienvenida p{
     text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
