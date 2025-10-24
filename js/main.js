@@ -2,8 +2,15 @@
 //variables estaticas
  // Cuenta regresiva
   var fechaCuentaRegresiva = "09/10/2026 19:00:00";
+ // Mapas
+    var latitudFiesta = 39.574610639483;
+    var longitudFiesta = -0.29997859999994;
+    var latitudCeremonia = 40.7128;
+    var longitudCeremonia = -74.0060;
 
-
+    // Links Mapas
+    var linkMapsFiesta = "https://www.openstreetmap.org/?mlat=40.7128&mlon=-74.0060#map=15/40.7128/-74.0060";
+    var linkMapsCeremonia = "https://www.openstreetmap.org/?mlat=40.7128&mlon=-74.0060#map=15/40.7128/-74.0060";
 
 
 
@@ -126,8 +133,7 @@ function onYouTubeIframeAPIReady() {
       }
 /*accion boton sin musica */
 
-
-       document.getElementById('btnSinMusica').addEventListener('click',(e)=>
+      document.getElementById('btnSinMusica').addEventListener('click',(e)=>
         {
          cerrarPortadaBienvenida();
        
@@ -252,14 +258,14 @@ modal.hide();
     });
 
 
-  /*  let svgContainerFlores4 = document.querySelector('.ceremonia-fiesta-flor-der');
+    let svgContainerFlores4 = document.querySelector('.ceremonia-fiesta-flor-der');
 
     let animFlores4 = bodymovin.loadAnimation({
       container: svgContainerFlores4,
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path: _pathProducto + "img/img_flores04.json"
+      path: "../img/iconos/img_flores04.json"
     });
 
     var wpFlores4 = new Waypoint({
@@ -270,7 +276,7 @@ modal.hide();
       }
     });
 
-
+/*
     let svgContainerFlores5 = document.querySelector('.regalos-flor-der');
 
     let animFlores5 = bodymovin.loadAnimation({
@@ -301,6 +307,27 @@ modal.hide();
 
    animFlechaAbajo.setSpeed(0.6);
 
+   /*ANIMACION CUENTA REGRESIVA */
+   let svgContainerCorazonFalta = document.querySelector('.corazon-falta');
+
+    let animCorazonFalta = bodymovin.loadAnimation({
+      container: svgContainerCorazonFalta,
+      renderer: 'svg',
+      renderer: true,
+      path: "img/iconos/corazon-falta.json"
+    });
+
+    /*ANIMACION ANILLOS */
+      let svgContainerAnillos = document.querySelector('.anim-anillos');
+
+    let animAnillos = bodymovin.loadAnimation({
+      container: svgContainerAnillos,
+      renderer: 'svg',
+      loop: true,
+      path:"../img/iconos/img_anillos.json"
+    });
+
+    animAnillos.play();
    /* PARALLAX CARATULA */
 
     if (device == 'mobile' || $(window).width() < 768) {
@@ -366,3 +393,319 @@ modal.hide();
       }
     }, 1000);
 
+// Abrir modal
+
+$('body').on('click', 'a.modal-como-llegar', function(e) {
+  e.preventDefault(); // Evita que la acción por defecto del enlace ocurra
+
+  var evento = $(this).attr('data-evento');
+
+  var titleModalMapa, latitudMapa, longitudMapa, linkMaps;
+
+  if (evento == 'Fiesta') {
+    titleModalMapa = lang_titleModalMapaFiesta;
+    latitudMapa = latitudFiesta;
+    longitudMapa = longitudFiesta;
+    linkMaps = linkMapsFiesta;
+  }
+
+  if (evento == 'Ceremonia') {
+    titleModalMapa = lang_titleModalMapaCeremonia;
+    latitudMapa = latitudCeremonia;
+    longitudMapa = longitudCeremonia;
+    linkMaps = linkMapsCeremonia;
+  }
+
+  // Cambio de título del modal
+  $('#modalMapa .modal-title').text(titleModalMapa);
+
+  // Generar el link para ampliar mapa (puedes usar Google Maps o OpenStreetMap directamente aquí)
+  // $('.ampliar-mapa').attr('href', linkMaps);
+
+  // Cambiar el mapa en el modal
+  
+  // Aquí es donde deberías inicializar el mapa con Leaflet si aún no lo has hecho
+$('.ampliar-mapa').attr('href', linkMaps);
+ initMap(latitudMapa, longitudMapa);
+  // Mostrar el modal con animación y sin backdrop (si no lo necesitas)
+  $('#modalMapa').modal('show');
+});
+
+
+
+   /* $('body').on('click', 'a.modal-como-llegar', function(e) {
+       var evento = $(this).attr('data-evento');
+  
+  var titleModalMapa, latitudMapa, longitudMapa, linkMaps;
+
+  if (evento == 'Fiesta') {
+    titleModalMapa = lang_titleModalMapaFiesta;
+    latitudMapa = latitudFiesta;
+    longitudMapa = longitudFiesta;
+    linkMaps = linkMapsFiesta;
+  }
+
+  if (evento == 'Ceremonia') {
+    titleModalMapa = lang_titleModalMapaCeremonia;
+    latitudMapa = latitudCeremonia;
+    longitudMapa = longitudCeremonia;
+    linkMaps = linkMapsCeremonia;
+  }
+
+  // Cambio de título del modal
+  $('#modalMapa .modal-title').text(titleModalMapa);
+
+  // Genero el link para ampliar mapa (puedes usar Google Maps o OpenStreetMap directamente aquí)
+//  $('.ampliar-mapa').attr('href', linkMaps);
+
+  // Cambiar el mapa en el modal
+
+
+  // Mostrar el modal
+  $('#modalMapa').modal({
+    backdrop: 'static'
+  });
+  
+ // initMap(latitudMapa, longitudMapa);
+/*
+      e.preventDefault();
+
+      var evento = $(this).attr('data-evento');
+
+      if (evento == 'Fiesta') {
+        var titleModalMapa = lang_titleModalMapaFiesta;
+
+        var latitudMapa = latitudFiesta;
+        var longitudMapa = longitudFiesta;
+        var linkMaps = linkMapsFiesta;
+      }
+
+      if (evento == 'Ceremonia') {
+        var titleModalMapa = lang_titleModalMapaCeremonia;
+
+        var latitudMapa = latitudCeremonia;
+        var longitudMapa = longitudCeremonia;
+        var linkMaps = linkMapsCeremonia;
+      }
+
+      // Cambio titulo
+      $('#modalMapa .modal-title').text(titleModalMapa);
+
+      // Genero el link para ampliar mapa
+      $('.ampliar-mapa').attr('href', linkMaps);
+
+      // Cambio mapa
+      initMap(latitudMapa, longitudMapa);
+
+      $('#modalMapa').modal({
+        backdrop: 'static'
+      })*/
+
+  /*  });*/
+    /* Config map */
+  
+    function initMap(latitud = 0, longitud = 0) {
+
+      var myLatLng = [latitud, longitud];
+
+  // Crear el mapa
+  var map = L.map('googleMap').setView(myLatLng, 15);  // 'googleMap' es el ID del contenedor del mapa
+
+  // Añadir el "tile layer" (las capas de mapa que se verán en el fondo)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // Añadir un marcador en la ubicación especificada
+  var marker = L.marker(myLatLng).addTo(map);
+/*
+      var myLatLng = {
+        lat: latitud,
+        lng: longitud
+      };
+
+      var mapOptions = {
+        // How zoomed in you want the map to start at (always required)
+        zoom: 15,
+        scrollwheel: false,
+        disableDefaultUI: false,
+
+        // The latitude and longitude to center the map (always required)
+        center: new google.maps.LatLng(latitud, longitud),
+
+        // How you would like to style the map.
+        // This is where you would paste any style found on Snazzy Maps.
+        styles: [{
+            "featureType": "administrative",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+              "color": "#6195a0"
+            }]
+          },
+          {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [{
+              "color": "#f2f2f2"
+            }]
+          },
+          {
+            "featureType": "landscape",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "#ffffff"
+            }]
+          },
+          {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          },
+          {
+            "featureType": "poi.park",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#e6f3d6"
+              },
+              {
+                "visibility": "on"
+              }
+            ]
+          },
+          {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [{
+                "saturation": -100
+              },
+              {
+                "lightness": 45
+              },
+              {
+                "visibility": "simplified"
+              }
+            ]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "all",
+            "stylers": [{
+              "visibility": "simplified"
+            }]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#f4d2c5"
+              },
+              {
+                "visibility": "simplified"
+              }
+            ]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "labels.text",
+            "stylers": [{
+              "color": "#4e4e4e"
+            }]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "#f4f4f4"
+            }]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+              "color": "#787878"
+            }]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "labels.icon",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          },
+          {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          },
+          {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [{
+                "color": "#eaf6f8"
+              },
+              {
+                "visibility": "on"
+              }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "#eaf6f8"
+            }]
+          }
+        ]
+
+      };
+
+      var mapElement = document.getElementById('googleMap');
+
+      var map = new google.maps.Map(mapElement, mapOptions);
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+      });
+*/
+    }
+    /*ajustes ADDEVENT */
+     window.addeventasync = function() {
+      addeventatc.settings({
+
+        css: false,
+
+        appleical: {
+          show: true,
+          text: "Apple Calendar"
+        },
+        google: {
+          show: true,
+          text: "Google <em>(online)</em>"
+        },
+        office365: {
+          show: true,
+          text: "Office 365 <em>(online)</em>"
+        },
+        outlook: {
+          show: true,
+          text: "Outlook"
+        },
+        outlookcom: {
+          show: true,
+          text: "Outlook.com <em>(online)</em>"
+        },
+        yahoo: {
+          show: true,
+          text: "Yahoo <em>(online)</em>"
+        },
+        facebook: {
+          show: true,
+          text: "Facebook"
+        }
+      });
+    };

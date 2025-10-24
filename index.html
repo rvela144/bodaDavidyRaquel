@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="color-scheme" content="light only" />
-    <meta name="theme-color" content="#C6D7CF">
+   
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+            <title>Invitación de Boda — David & Raquel</title>
 
-    <!-- ESTILOS-->
+    <!--SLICK-->
+      <!-- ESTILOS-->
      <!--BOOTSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
-     <!--SLICK-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="/styles/slick.css"/>
      <!--SLICK THEME-->
     <link rel="stylesheet" type="text/css" href="/styles/slick-theme.css"/>
@@ -20,14 +21,21 @@
     <link rel="stylesheet" type="text/css" href="/styles/fancybox.css"/>
     <!--Mis estilos-->
      <link href="styles/events.css" rel="stylesheet"/>
+         <link href="styles/style.css" rel="stylesheet"/>
       <link href="styles/estilosResponsive.css" rel="stylesheet"/>
-    <link href="styles/style.css" rel="stylesheet"/>
 
-    <title>Invitación de Boda — David & Raquel</title>
+ <meta name="theme-color" content="#C6D7CF">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">   
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+<link rel="icon" sizes="16x16 32x32 64x64" href="/img/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#FFFFFF">   
+    
+
+
 
     
   
-<body class="bg-light">
+<body>
    
     <!-- Animación -->
     <!-- animación carga-->
@@ -76,26 +84,23 @@
         </p>
  <span>La música de fondo es parte de la experiencia</span>
         <br>
+        
         <button id="btnConMusica" class="btn btn-light btn-lg px-4">
         Ingresar con música 🎵
       </button>
       <button id="btnSinMusica"  class="btn btn-outline-light btn-lg px-4">
         Ingresar sin música 🚪
       </button>
+ <!--<a class="boton" id="btnConMusica" href="">Ingresar con música</a>
+        <a class="boton" data-dismiss="modal" aria-label="Close" id="" href="">Ingresar sin música</a>-->
+
   </div>
- 
+
 </div>
     </div>
   </div>
 
-   <!-- Musica -->
-
-
-  <div id="controlador-musica">
-    <div id="play-pause-music" data-estado-music="pause" class="music-anim-icon"></div>
-  </div>
-
-  <div id="reproductor-musica-fondo"></div>
+   
 
 
 
@@ -203,13 +208,162 @@
     </div>
   </div>
 </section>
+ <!-- Ceremonia - Fiesta-->
+    <section class="ceremonia-fiesta">
+
+  <div class="ceremonia-fiesta-flor-der"></div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 mx-auto col-ceremonia text-center">
+
+        <div class="anim-anillos"></div>
+
+        <br>
+
+        <h3>
+          Ceremonia        </h3>
+
+        <div class="info-col">
+
+          <div class="info-box">
+            <h6>Día</h6>
+            <p>Sábado 09 de Octubre - 19:00 h</p>
+            <a href="#" class="boton addeventatc">
+
+              <span class="nameBtn">Agendar</span>
+
+              <span class="start">09/10/2026 19:00 PM</span>
+              <span class="end">09/10/2026 05:00 PM</span>
+              <span class="timezone">Europe/Madrid</span>
+              <span class="title">Boda de David y Raquel (Ceremonia)</span>
+
+            </a>
+          </div>
+
+          <div class="info-box">
+            <h6>Lugar</h6>
+            <p>XXXXXXXXX</p>
+            <a href="#" data-evento="Ceremonia" class="boton confirmar-asistencia">Confirmar asistencia</a>
+          </div>
+
+          <div class="info-box">
+            <h6>Dirección</h6>
+            <p>Carrer d'Isabel la Catòlica, 13, L'Eixample, Valencia</p>
+            <a href="#" data-evento="Ceremonia" class="boton modal-como-llegar">¿Cómo llegar?</a>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-md-6 mx-auto col-fiesta text-center">
+
+        <div class="anim-fiesta"></div>
+
+        <br>
+
+        <h3>
+          Celebración        </h3>
+
+        <div class="info-col">
+
+          <div class="info-box">
+            <h6>Día</h6>
+            <p>Sábado 19 de Octubre - 13:00 h</p>
+            <a href="#" class="boton addeventatc">
+              <span class="nameBtn">Agendar</span>
+
+              <span class="start">10/19/2024 01:00 PM</span>
+              <span class="end">10/19/2024 10:00 PM</span>
+              <span class="timezone">Europe/Madrid</span>
+              <span class="title">Boda de Oleksandr y Marina (Celebración)</span>
+            </a>
+          </div>
+
+          <div class="info-box">
+            <h6>Lugar</h6>
+            <p>Jardines La Hacienda</p>
+            <a href="#" data-evento="Fiesta" class="boton confirmar-asistencia">Confirmar asistencia</a>
+          </div>
+
+          <div class="info-box">
+            <h6>Dirección</h6>
+            <p>Camino de la Tanca s/n, El Puig de Santa Maria, Valencia</p>
+            <a href="#" data-evento="Fiesta" class="boton modal-como-llegar">¿Cómo llegar?</a>
+          </div>
+
+          <!-- <div class="info-box">
+            <h6>Tarjeta</h6>
+            <p>Conoce todos los detalles sobre las tarjetas</p>
+            <a href="#" class="boton modal-tarjeta">Ver más</a>
+          </div> -->
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- Modal mapa-->
+    <div id="modalMapa" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="img-top-modal d-flex justify-content-center align-items-start">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+
+      <div class="modal-header">
+
+        <h5 class="modal-title"></h5>
+
+      </div>
+
+      <div class="modal-body">
+        <div id="googleMap"></div>
+      </div>
+
+      <div class="modal-footer">
+        <a class="boton ampliar-mapa" target="_blank" href="#">Ampliar mapa</a>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+  <!-- Musica -->
+
+
+  <div id="controlador-musica">
+    <div id="play-pause-music" data-estado-music="pause" class="music-anim-icon"></div>
+  </div>
+
+  <div id="reproductor-musica-fondo"></div>
+
 
    <!-- Scripts-->
+    <script type='text/javascript' src='/lang/js/es-ES.js'></script>
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/pixelcog/parallax.js/parallax.min.js"></script>
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script>-->
+
   <script type="text/javascript" src="/js/slick.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
     <script type="text/javascript" src="/js/fancybox.umd.js"></script>
