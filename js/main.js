@@ -83,11 +83,6 @@ authenticado=sessionStorage.getItem('authenticated');
     modal.show()
    }
 
-  // Iniciar animaciones de portada
- // animFlores1.setSpeed(0.6);
- // animFlores1.play();
-  //animFlores2.setSpeed(0.6);
-  //animFlores2.play();*/
 });
 
 
@@ -194,8 +189,105 @@ modal.hide();
     container: svgContainerLoader,
     renderer: 'svg',
     loop: true,
-    path: "img/iconos/corazon.json"
+    path: "../img/iconos/corazon.json"
   });
+  // Animacion Flores
+ 
+    let svgContainerFlores1 = document.querySelector('.portada-flor-izq-sup');
+
+    let animFlores1 = bodymovin.loadAnimation({
+      container: svgContainerFlores1,
+      renderer: 'svg',
+      autoplay: false,
+      loop: false,
+      path:"../img/iconos/img_flores01.json"
+    });
+
+    var wpFlores1 = new Waypoint({
+      element: document.querySelector('.box-nombres-fecha-portada'),
+      handler: function() {
+        animFlores1.stop();
+        animFlores1.play()
+      }
+    });
+
+
+
+    let svgContainerFlores2 = document.querySelector('.portada-flor-der-inf');
+
+    let animFlores2 = bodymovin.loadAnimation({
+      container: svgContainerFlores2,
+      renderer: 'svg',
+      autoplay: false,
+      loop: false,
+      path:"../img/iconos/img_flores02.json"
+    });
+
+    var wpFlores2 = new Waypoint({
+      element: document.querySelector('.box-nombres-fecha-portada'),
+      handler: function() {
+        animFlores2.stop();
+        animFlores2.play()
+      }
+    });
+
+
+    let svgContainerFlores3 = document.querySelector('.portada-flor-izq-inf');
+
+    let animFlores3 = bodymovin.loadAnimation({
+      container: svgContainerFlores3,
+      renderer: 'svg',
+      autoplay: false,
+      loop: false,
+      path:"../img/iconos/img_flores03.json"
+    });
+
+    var wpFlores3 = new Waypoint({
+      element: document.querySelector('.flecha-continuar'),
+      handler: function() {
+        animFlores3.stop();
+        animFlores3.play();
+
+      }
+    });
+
+
+  /*  let svgContainerFlores4 = document.querySelector('.ceremonia-fiesta-flor-der');
+
+    let animFlores4 = bodymovin.loadAnimation({
+      container: svgContainerFlores4,
+      renderer: 'svg',
+      autoplay: false,
+      loop: false,
+      path: _pathProducto + "img/img_flores04.json"
+    });
+
+    var wpFlores4 = new Waypoint({
+      element: document.querySelector('.info-col'),
+      handler: function() {
+        animFlores4.stop();
+        animFlores4.play()
+      }
+    });
+
+
+    let svgContainerFlores5 = document.querySelector('.regalos-flor-der');
+
+    let animFlores5 = bodymovin.loadAnimation({
+      container: svgContainerFlores5,
+      renderer: 'svg',
+      autoplay: false,
+      loop: false,
+      path: _pathProducto + "img/img_flores05.json"
+    });
+
+    var wpFlores5 = new Waypoint({
+      element: document.querySelector('.anim-musica'),
+      handler: function() {
+        animFlores5.stop();
+        animFlores5.play();
+      }
+    });*/
   //ANIMACION FLECHA ABAJO
 
     let svgContainerFlechaScroll = document.querySelector('.flecha-continuar');
