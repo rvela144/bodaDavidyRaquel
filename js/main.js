@@ -1,3 +1,14 @@
+
+//variables estaticas
+ // Cuenta regresiva
+  var fechaCuentaRegresiva = "09/10/2026 19:00:00";
+
+
+
+
+
+
+
 const overlay = document.getElementById("portadaBienvenida");
 const musica= document.getElementById("musicaFondo");
 const btnSinMusica = document.getElementById("btnSinMusica");
@@ -5,11 +16,30 @@ const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'),{
   backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
   keyboard: false      // Desactiva el cierre con la tecla Escape
 });
-let authenticado = false;
- let player;
-/*comprobar si esta logeado */// Aquí deberías comprobar si el usuario está autenticado, por ejemplo, con cookies o localStorage
 
-   
+let authenticado = false;
+let player;
+let device;
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  device = 'mobile';
+} else {
+  device = 'desktop';
+}
+
+   /*SOPORTE WEB */
+
+   function support_format_webp() {
+    var elem = document.createElement('canvas');
+
+    if (!!(elem.getContext && elem.getContext('2d'))) {
+      
+      return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+    } else {
+  
+      return false;
+    }
+  }
 
 /*MÉTODO MOSTRAR ICONO DE CARGA */
 
@@ -178,4 +208,69 @@ modal.hide();
   });
 
    animFlechaAbajo.setSpeed(0.6);
+
+   /* PARALLAX CARATULA */
+
+    if (device == 'mobile' || $(window).width() < 768) {
+
+    // Aceptar webp?
+    // TODO:cambiar imagenes 
+    if (support_format_webp()) {
+      var imageParallax = '../img/fotos/WhatsApp-Image-2025-10-24-at-07.08.21.webp';
+    } else {
+      var imageParallax = '../img/fotos/imagen1.jpg';
+    }
+
+  } else {
+
+    // Aceptar webp?
+    if (support_format_webp()) {
+      var imageParallax = '../img/fotos/WhatsApp-Image-2025-10-24-at-07.08.20.webp';
+    } else {
+      var imageParallax = '../img/fotos/imagen2.jpg';
+    }
+
+  }
+
+  $('.portada').parallax({
+    imageSrc:imageParallax
+  });
+
+
+
+
+    let countDownDate = new Date(fechaCuentaRegresiva).getTime();
+
+    //actualizar contador cada 1 segundo
+    let x = setInterval(function() {
+
+      // fecha y hora actuales
+      let now = new Date().getTime();
+
+      // distancia fecha actual a fecha objetivo
+      let distance = countDownDate - now;
+
+      // calcular el tiempo para saber dia,horas,minutos  y segundos
+      let dias = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let horas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let segundos = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+   document.getElementById("dias").textContent=dias;
+   document.getElementById("horas").textContent=horas;
+   document.getElementById("minutos").textContent=minutos;
+   document.getElementById("segundos").textContent=segundos;
+  
+
+
+
+      // si termina la cuenta atrás muestro un mensaje
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("reloj").innerHTML = '<p class="fin-cuenta">' +
+          lang_textoFinalCuentaRegresiva + '</p>';
+        document.querySelector('.falta').textContent= '';
+      }
+    }, 1000);
 
