@@ -28,6 +28,10 @@ const modalMapa = new bootstrap.Modal(document.getElementById('modalMapa'),{
   backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
   keyboard: false      // Desactiva el cierre con la tecla Escape
 });
+const modalSugerirCancion = new bootstrap.Modal(document.getElementById('modalSugerirCancion'),{
+  backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
+  keyboard: false      // Desactiva el cierre con la tecla Escape
+});
 let authenticado = false;
 let player;
 let device;
@@ -737,6 +741,13 @@ document.body.addEventListener("click", async function (e) {
     const form = document.getElementById("formSugerirCancion");
     if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">Error de conexión.</span>`);
   }
+});
+
+//funcion para cerrar sugerir cancion 
+
+ document.getElementById('cerrarSugerirCancion').addEventListener('click', function  (e) {
+  
+ modalSugerirCancion.hide();
 });
 
 /* Funciones y varialbes globales */
