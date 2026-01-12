@@ -287,7 +287,7 @@ modal.hide();
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path: _pathProducto + "img/img_flores05.json"
+      path: _pathProducto + "../img/iconos/img_flores05.json"
     });
 
     var wpFlores5 = new Waypoint({
@@ -306,7 +306,7 @@ modal.hide();
     container: svgContainerFlechaScroll,
     renderer: 'svg',
     loop: true,
-    path: "img/iconos/flechaAbajo.json"
+    path: "../img/iconos/flechaAbajo.json"
   });
 
    animFlechaAbajo.setSpeed(0.6);
@@ -318,7 +318,7 @@ modal.hide();
       container: svgContainerCorazonFalta,
       renderer: 'svg',
       renderer: true,
-      path: "img/iconos/corazon-falta.json"
+      path: "../img/iconos/corazon-falta.json"
     });
 
     /*ANIMACION ANILLOS */
