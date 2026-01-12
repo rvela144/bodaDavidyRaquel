@@ -556,8 +556,191 @@ $('body').on('click', 'a.modal-como-llegar', function(e) {
         }
       });
     };
+/*sugerir cancion */
 
-fetch("/api/sugerir_cancion", {
+document.body.addEventListener("click", function (e) {
+  const link = e.target.closest("a.sugerir-cancion");
+  if (!link) return;
+
+  e.preventDefault();
+
+  // Remuevo mensajes de error anteriores
+  const error = document.getElementById("error-form");
+  if (error) error.remove();
+
+  // Mostrar el modal con backdrop estático (Bootstrap)
+  const modalEl = document.getElementById("modalSugerirCancion");
+
+  // Bootstrap 5
+  const modal = new bootstrap.Modal(modalEl, {
+    backdrop: "static",
+    keyboard: false
+  });
+
+  modal.show();
+});
+
+
+// Validacion de form.
+ function isOkSugerirCancion() {
+  // Remuevo mensajes de error anteriores
+  const prevError = document.getElementById("error-form");
+  if (prevError) prevError.remove();
+
+  // Variables necesarias para la validación
+  let flag = true;
+  let err = "";
+
+  // Variables del form para validar
+  const sugerenciaName = (document.getElementById("nombreSugerencia")?.value || "").trim();
+  const sugerenciaDescription = (document.getElementById("descripcionSugerencia")?.value || "").trim();
+  const sugerenciaLink = (document.getElementById("linkSugerencia")?.value || "").trim();
+
+  // Descripción
+  if (sugerenciaDescription === "") {
+    flag = false;
+    err = lang_cancionRequerida;
+  } else {
+    if (sugerenciaDescription.length > 50) {
+      flag = false;
+      err = lang_caracteresCancionSugerencia;
+    }
+  }
+
+  // Link
+  if (sugerenciaLink !== "") {
+    if (!is_url(sugerenciaLink)) {
+      flag = false;
+      err = lang_linkIncorrecto;
+    }
+
+    if (sugerenciaLink.length > 250) {
+      flag = false;
+      err = lang_caracteresLinkSugerencia;
+    }
+  }
+
+  // Nombre
+  if (sugerenciaName === "") {
+    flag = false;
+    err = lang_nombreRequerido;
+  } else {
+    if (sugerenciaName.length > 20) {
+      flag = false;
+      err = lang_caracteresNombreSugerencia;
+    }
+  }
+
+  // Si hay error
+  if (flag === false) {
+    const form = document.getElementById("formSugerirCancion");
+    if (form) {
+      form.insertAdjacentHTML("afterend", `<span id="error-form">${err}</span>`);
+    }
+  }
+
+  // Retorno el estado de la validación
+  return flag;
+}
+document.body.addEventListener("click", async function (e) {
+  const btn = e.target.closest("#sendSugerenciaCancion");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  if (!isOkSugerirCancion()) return;
+
+  // Load and disable button
+  btn.textContent = lang_enviandoSugerencia + "...";
+  btn.disabled = true;
+
+  // Datos del formulario (según tus IDs)
+  const nombre = (document.getElementById("nombreSugerencia")?.value || "").trim();
+  const titulo = (document.getElementById("descripcionSugerencia")?.value || "").trim(); // tu "canción"
+  const link = (document.getElementById("linkSugerencia")?.value || "").trim();
+
+  // Si tienes campo artista en tu form, cambia esto:
+  const artista = (document.getElementById("artistaSugerencia")?.value || "").trim();
+
+  try {
+    const r = await fetch("/api/sugerir_cancion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nombre, titulo, artista, link })
+    });
+
+    const text = await r.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch { data = { error: true, desc: "Respuesta inválida del servidor.", raw: text }; }
+
+    // Error
+    if (data.error === true) {
+      btn.textContent = lang_sugerirCancion;
+      btn.disabled = false;
+
+      const prevError = document.getElementById("error-form");
+      if (prevError) prevError.remove();
+
+      const form = document.getElementById("formSugerirCancion");
+      if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">${data.desc}</span>`);
+      return;
+    }
+
+    // Éxito
+    btn.textContent = lang_sugerirCancion;
+    btn.disabled = false;
+
+    // Reset form
+    const form = document.getElementById("formSugerirCancion");
+    if (form) form.reset();
+
+    const modalEl = document.getElementById("modalSugerirCancion");
+    if (!modalEl) return;
+
+    // Ocultar secciones del modal
+    const elementos = modalEl.querySelectorAll(".formulario-content, .modal-footer, h5");
+    elementos.forEach(el => (el.style.display = "none"));
+
+    // Ajuste para centrar mensaje
+    const modalBody = modalEl.querySelector(".modal-body");
+    if (modalBody) modalBody.classList.add("fix-height");
+
+    // Mostrar mensaje de éxito
+    const msjContent = modalEl.querySelector(".msj-content");
+    if (msjContent) {
+      msjContent.innerHTML = `<h5>${lang_sugerirCancionMsjExito_1}</h5><p>${lang_sugerirCancionMsjExito_2}</p>`;
+      msjContent.style.display = "block";
+    }
+
+    // Cerrar modal y restaurar UI
+    setTimeout(function () {
+      const instance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+      instance.hide();
+
+      elementos.forEach(el => (el.style.display = ""));
+      if (msjContent) {
+        msjContent.innerHTML = "";
+        msjContent.style.display = "none";
+      }
+      if (modalBody) modalBody.classList.remove("fix-height");
+    }, 4000);
+
+  } catch (err) {
+    console.error(err);
+    btn.textContent = lang_sugerirCancion;
+    btn.disabled = false;
+
+    const prevError = document.getElementById("error-form");
+    if (prevError) prevError.remove();
+
+    const form = document.getElementById("formSugerirCancion");
+    if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">Error de conexión.</span>`);
+  }
+});
+
+
+/*fetch("/api/sugerir_cancion", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
@@ -575,5 +758,5 @@ fetch("/api/sugerir_cancion", {
 .then((data) => {
   console.log("DATA:", data);
 })
-.catch(console.error);
+.catch(console.error);*/
 
