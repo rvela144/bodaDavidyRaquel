@@ -564,12 +564,16 @@ fetch("/api/sugerir_cancion", {
     nombre: "pepe",
     titulo: "abracadabra",
     artista: "Rosalia",
-    link:"holaaa"
+    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   })
 })
-.then(r => r.json())
-.then(data => {
-  if (data.error) { alert(data.desc); return; }
-  alert("¡Sugerencia enviada!");
-});
+.then(async (r) => {
+  const text = await r.text();
+  console.log("HTTP", r.status, "RAW:", text);
+  try { return JSON.parse(text); } catch { return { parseError: true, raw: text }; }
+})
+.then((data) => {
+  console.log("DATA:", data);
+})
+.catch(console.error);
 
