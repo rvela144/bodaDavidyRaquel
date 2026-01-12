@@ -331,6 +331,19 @@ modal.hide();
     });
 
     animAnillos.play();
+
+
+     /*ANIMACION FIESTA */
+      let svgContainerfiesta = document.querySelector('.anim-fiesta');
+
+    let animFiesta = bodymovin.loadAnimation({
+      container: svgContainerFiesta,
+      renderer: 'svg',
+      loop: true,
+      path:"../img/iconos/img_fiesta.json"
+    });
+
+    animFiesta.play();
    /* PARALLAX CARATULA */
 
     if (device == 'mobile' || $(window).width() < 768) {
@@ -396,51 +409,6 @@ modal.hide();
       }
     }, 1000);
 
-// Abrir modal
-/*
-$('body').on('click', 'a.modal-como-llegar', function(e) {
-  e.preventDefault(); // Evita que la acción por defecto del enlace ocurra
-
-  var evento = $(this).attr('data-evento');
-
-  var titleModalMapa, latitudMapa, longitudMapa, linkMaps;
-
-  if (evento == 'Fiesta') {
-    titleModalMapa = lang_titleModalMapaFiesta;
-    latitudMapa = latitudFiesta;
-    longitudMapa = longitudFiesta;
-    linkMaps = linkMapsFiesta;
-  }
-
-  if (evento == 'Ceremonia') {
-    titleModalMapa = lang_titleModalMapaCeremonia;
-    latitudMapa = latitudCeremonia;
-    longitudMapa = longitudCeremonia;
-    linkMaps = linkMapsCeremonia;
-  }
-
-  // Cambio de título del modal
-  $('#modalMapa .modal-title').text(titleModalMapa);
-
-  // Generar el link para ampliar mapa (puedes usar Google Maps o OpenStreetMap directamente aquí)
-  // $('.ampliar-mapa').attr('href', linkMaps);
-
-  // Cambiar el mapa en el modal
-  
-  // Aquí es donde deberías inicializar el mapa con Leaflet si aún no lo has hecho
-$('.ampliar-mapa').attr('href', linkMaps);
- 
-
-// Mostrar el modal con animación y sin backdrop (si no lo necesitas)
- modalMapa.show();
- // recargar el tamaño del mapa 
-const modalMapaEl = document.getElementById('modalMapa');
- modalMapaEl.addEventListener('shown.bs.modal', function() {
-  initMap(latitudMapa, longitudMapa);
-});
-  
-});
-*/
 //funcion para cerrar mapa 
 
  document.getElementById('cerrarMapa').addEventListener('click', function  (e) {
