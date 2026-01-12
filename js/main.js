@@ -1,7 +1,7 @@
 
 //variables estaticas
  // Cuenta regresiva
-  var fechaCuentaRegresiva = "09/10/2026 19:00:00";
+  var fechaCuentaRegresiva =  new Date(2026,9,9,19,0,0);
  // Mapas,
     var latitudFiesta = 39.3793486;
     var longitudFiesta = -0.3393689;
