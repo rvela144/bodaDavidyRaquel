@@ -1188,9 +1188,9 @@ section.footer .addeventatc span.nameBtn:hover{
 
 /* Modal Sugerir cancion */
 
-#modalSugerirCancion .modal-dialog{
+/*#modalSugerirCancion .modal-dialog{
   font-family: 'Quicksand', sans-serif;
-} 
+} */
 
 #modalSugerirCancion input{
   text-align: center;
