@@ -217,7 +217,7 @@ section.portada:after{
 }
 
 section.portada .container .row:first-child{
-  height: 100vh;
+  height: 100dvh;
 }
 
 section.portada .content-portada{

@@ -2,15 +2,15 @@
 //variables estaticas
  // Cuenta regresiva
   var fechaCuentaRegresiva = "09/10/2026 19:00:00";
- // Mapas
-    var latitudFiesta = 39.574610639483;
-    var longitudFiesta = -0.29997859999994;
+ // Mapas,
+    var latitudFiesta = 39.3793486;
+    var longitudFiesta = -0.3393689;
     var latitudCeremonia = 40.7128;
     var longitudCeremonia = -74.0060;
 
     // Links Mapas
-    var linkMapsFiesta = "https://www.openstreetmap.org/?mlat=40.7128&mlon=-74.0060#map=15/40.7128/-74.0060";
-    var linkMapsCeremonia = "https://www.openstreetmap.org/?mlat=40.7128&mlon=-74.0060#map=15/40.7128/-74.0060";
+    var linkMapsFiesta = "https://google.com/maps/dir/Pl.+Luxemburgo,+1,+46200+Paiporta,+Valencia,+España/CV-401,+Km+6,+46910+Alfafar,+Valencia/@39.3793486,-0.3393689,15z/data=!4m19!4m18!1m10!1m1!1s0xd604ef715050e0b:0xcd1b9fad9597f99f!2m2!1d-0.409398!2d39.4325469!3m4!1m2!1d-0.3409338!2d39.388303!3s0xd604bcc256525d9:0x4c3b7a13a2d1bd22!1m5!1m1!1s0xd604bcfad312e03:0xb7f2531d4f416e3b!2m2!1d-0.3335289!2d39.3744809!3e0!5m2!1e4!1e1?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D";
+    var linkMapsCeremonia = "https://google.com/maps/dir/Pl.+Luxemburgo,+1,+46200+Paiporta,+Valencia,+España/CV-401,+Km+6,+46910+Alfafar,+Valencia/@39.3793486,-0.3393689,15z/data=!4m19!4m18!1m10!1m1!1s0xd604ef715050e0b:0xcd1b9fad9597f99f!2m2!1d-0.409398!2d39.4325469!3m4!1m2!1d-0.3409338!2d39.388303!3s0xd604bcc256525d9:0x4c3b7a13a2d1bd22!1m5!1m1!1s0xd604bcfad312e03:0xb7f2531d4f416e3b!2m2!1d-0.3335289!2d39.3744809!3e0!5m2!1e4!1e1?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D";
 
 
 
@@ -23,7 +23,10 @@ const modal = new bootstrap.Modal(document.getElementById('portadaBienvenida'),{
   backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
   keyboard: false      // Desactiva el cierre con la tecla Escape
 });
-
+const modalMapa = new bootstrap.Modal(document.getElementById('modalMapa'),{
+  backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
+  keyboard: false      // Desactiva el cierre con la tecla Escape
+});
 let authenticado = false;
 let player;
 let device;
@@ -335,18 +338,18 @@ modal.hide();
     // Aceptar webp?
     // TODO:cambiar imagenes 
     if (support_format_webp()) {
-      var imageParallax = '../img/fotos/WhatsApp-Image-2025-10-24-at-07.08.21.webp';
+      var imageParallax = '/img/fotos/WhatsApp-Image-2025-10-24-at-07.08.21.webp';
     } else {
-      var imageParallax = '../img/fotos/imagen1.jpg';
+      var imageParallax = '/img/fotos/imagen1.jpg';
     }
 
   } else {
 
     // Aceptar webp?
     if (support_format_webp()) {
-      var imageParallax = '../img/fotos/WhatsApp-Image-2025-10-24-at-07.08.20.webp';
+      var imageParallax = '/img/fotos/WhatsApp-Image-2025-10-24-at-07.08.20.webp';
     } else {
-      var imageParallax = '../img/fotos/imagen2.jpg';
+      var imageParallax = '/img/fotos/imagen2.jpg';
     }
 
   }
@@ -394,7 +397,7 @@ modal.hide();
     }, 1000);
 
 // Abrir modal
-
+/*
 $('body').on('click', 'a.modal-como-llegar', function(e) {
   e.preventDefault(); // Evita que la acción por defecto del enlace ocurra
 
@@ -426,84 +429,59 @@ $('body').on('click', 'a.modal-como-llegar', function(e) {
   
   // Aquí es donde deberías inicializar el mapa con Leaflet si aún no lo has hecho
 $('.ampliar-mapa').attr('href', linkMaps);
- initMap(latitudMapa, longitudMapa);
-  // Mostrar el modal con animación y sin backdrop (si no lo necesitas)
-  $('#modalMapa').modal('show');
+ 
+
+// Mostrar el modal con animación y sin backdrop (si no lo necesitas)
+ modalMapa.show();
+ // recargar el tamaño del mapa 
+const modalMapaEl = document.getElementById('modalMapa');
+ modalMapaEl.addEventListener('shown.bs.modal', function() {
+  initMap(latitudMapa, longitudMapa);
+});
+  
+});
+*/
+//funcion para cerrar mapa 
+
+ document.getElementById('cerrarMapa').addEventListener('click', function  (e) {
+  
+ modalMapa.hide();
 });
 
+$('body').on('click', 'a.modal-como-llegar', function(e) {
+  e.preventDefault(); // Evita la acción por defecto del enlace
 
+  var evento = $(this).attr('data-evento');
 
-   /* $('body').on('click', 'a.modal-como-llegar', function(e) {
-       var evento = $(this).attr('data-evento');
-  
-  var titleModalMapa, latitudMapa, longitudMapa, linkMaps;
+  var titleModalMapa, mapUrl, linkMaps;
 
   if (evento == 'Fiesta') {
     titleModalMapa = lang_titleModalMapaFiesta;
-    latitudMapa = latitudFiesta;
-    longitudMapa = longitudFiesta;
-    linkMaps = linkMapsFiesta;
+    mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.1982317935444!2d-0.3350416700622172!3d39.374389642361535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604bcfad312e03%3A0xb7f2531d4f416e3b!2sMas%C3%ADa%20Santarrita!5e0!3m2!1ses!2ses!4v1761503431217!5m2!1ses!2ses";
+    linkMaps = linkMapsFiesta; // enlace para "abrir en Google Maps"
   }
 
   if (evento == 'Ceremonia') {
     titleModalMapa = lang_titleModalMapaCeremonia;
-    latitudMapa = latitudCeremonia;
-    longitudMapa = longitudCeremonia;
+    mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.1982317935444!2d-0.3350416700622172!3d39.374389642361535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604bcfad312e03%3A0xb7f2531d4f416e3b!2sMas%C3%ADa%20Santarrita!5e0!3m2!1ses!2ses!4v1761503431217!5m2!1ses!2ses";
     linkMaps = linkMapsCeremonia;
   }
 
-  // Cambio de título del modal
+  // Cambiar título del modal
   $('#modalMapa .modal-title').text(titleModalMapa);
 
-  // Genero el link para ampliar mapa (puedes usar Google Maps o OpenStreetMap directamente aquí)
-//  $('.ampliar-mapa').attr('href', linkMaps);
+  // Cambiar enlace del botón "Abrir en Google Maps"
+  $('.ampliar-mapa').attr('href', linkMaps);
 
-  // Cambiar el mapa en el modal
-
+  // Insertar el iframe del mapa (se adapta al contenedor)
+  $('#googleMap').html(`<iframe src="${mapUrl}" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`);
 
   // Mostrar el modal
-  $('#modalMapa').modal({
-    backdrop: 'static'
-  });
-  
- // initMap(latitudMapa, longitudMapa);
-/*
-      e.preventDefault();
-
-      var evento = $(this).attr('data-evento');
-
-      if (evento == 'Fiesta') {
-        var titleModalMapa = lang_titleModalMapaFiesta;
-
-        var latitudMapa = latitudFiesta;
-        var longitudMapa = longitudFiesta;
-        var linkMaps = linkMapsFiesta;
-      }
-
-      if (evento == 'Ceremonia') {
-        var titleModalMapa = lang_titleModalMapaCeremonia;
-
-        var latitudMapa = latitudCeremonia;
-        var longitudMapa = longitudCeremonia;
-        var linkMaps = linkMapsCeremonia;
-      }
-
-      // Cambio titulo
-      $('#modalMapa .modal-title').text(titleModalMapa);
-
-      // Genero el link para ampliar mapa
-      $('.ampliar-mapa').attr('href', linkMaps);
-
-      // Cambio mapa
-      initMap(latitudMapa, longitudMapa);
-
-      $('#modalMapa').modal({
-        backdrop: 'static'
-      })*/
-
-  /*  });*/
+  //modalMapa.show();
+   $('#modalMapa').modal('show');
+});
     /* Config map */
-  
+  /*
     function initMap(latitud = 0, longitud = 0) {
 
       var myLatLng = [latitud, longitud];
@@ -671,8 +649,8 @@ $('.ampliar-mapa').attr('href', linkMaps);
         position: myLatLng,
         map: map,
       });
-*/
-    }
+
+    }*/
     /*ajustes ADDEVENT */
      window.addeventasync = function() {
       addeventatc.settings({
