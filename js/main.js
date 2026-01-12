@@ -392,10 +392,10 @@ modal.hide();
       let segundos = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-   document.getElementById("dias").textContent=dias;
-   document.getElementById("horas").textContent=horas;
-   document.getElementById("minutos").textContent=minutos;
-   document.getElementById("segundos").textContent=segundos;
+document.querySelector("#dias .number").textContent = days;
+document.querySelector("#horas .number").textContent = hours;
+document.querySelector("#minutos .number").textContent = minutes;
+document.querySelector("#segundos .number").textContent = seconds;
   
 
 
