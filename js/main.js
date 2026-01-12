@@ -557,7 +557,7 @@ $('body').on('click', 'a.modal-como-llegar', function(e) {
       });
     };
 
-fetch("/api/sugerir-cancion", {
+fetch("/api/sugerir_cancion", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
