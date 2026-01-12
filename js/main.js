@@ -275,11 +275,11 @@ modal.hide();
       element: document.querySelector('.info-col'),
       handler: function() {
         animFlores4.stop();
-        animFlores4.play()
+        animFlores4.play();
       }
     });
 
-/*
+
     let svgContainerFlores5 = document.querySelector('.regalos-flor-der');
 
     let animFlores5 = bodymovin.loadAnimation({
@@ -296,7 +296,8 @@ modal.hide();
         animFlores5.stop();
         animFlores5.play();
       }
-    });*/
+    });
+
   //ANIMACION FLECHA ABAJO
 
     let svgContainerFlechaScroll = document.querySelector('.flecha-continuar');
@@ -344,6 +345,76 @@ modal.hide();
     });
 
     animFiesta.play();
+
+
+/*ANIMACION MUSICA SELECCION */
+    let svgContainerMusica = document.querySelector('.anim-musica');
+
+    let animMusica = bodymovin.loadAnimation({
+      container: svgContainerMusica,
+      render: 'svg',
+      loop: true,
+      path: _pathProducto + "../img/iconos/img_canciones.json"
+    });
+
+    animMusica.play();
+
+    /* Animacion Vestuario */
+    let svgContainerVestuario = document.querySelector('.anim-vestuario');
+
+    let animVestuario = bodymovin.loadAnimation({
+      container: svgContainerVestuario,
+      render: 'svg',
+      loop: true,
+      path: _pathProducto + "../img/iconos/vestuario.json"
+    });
+
+    animVestuario.play();
+
+
+
+ /* Animacion Tips */
+
+    let svgContainerTips = document.querySelector('.anim-tips');
+
+    let animTips = bodymovin.loadAnimation({
+      container: svgContainerTips,
+      render: 'svg',
+      loop: true,
+      path: _pathProducto + "../img/iconos/tips.json"
+    });
+
+    animTips.play();
+
+
+
+/*Animacion Hotel*/
+ 
+    let svgContainerHotel = document.querySelector('.anim-hotel');
+
+    let animHotel = bodymovin.loadAnimation({
+      container: svgContainerHotel,
+      render: 'svg',
+      loop: true,
+      path: _pathProducto + "../img/iconos/hotel.json"
+    });
+
+    animHotel.play();
+  
+
+
+  /* Animacion Bus */
+  
+    let svgContainerBus = document.querySelector('.anim-bus');
+
+    let animBus = bodymovin.loadAnimation({
+      container: svgContainerBus,
+      render: 'svg',
+      loop: true,
+      path: _pathProducto + "../img/iconos/bus.json"
+    });
+
+    animBus.play();
    /* PARALLAX CARATULA */
 
     if (device == 'mobile' || $(window).width() < 768) {
@@ -448,177 +519,6 @@ $('body').on('click', 'a.modal-como-llegar', function(e) {
   //modalMapa.show();
    $('#modalMapa').modal('show');
 });
-    /* Config map */
-  /*
-    function initMap(latitud = 0, longitud = 0) {
-
-      var myLatLng = [latitud, longitud];
-
-  // Crear el mapa
-  var map = L.map('googleMap').setView(myLatLng, 15);  // 'googleMap' es el ID del contenedor del mapa
-
-  // Añadir el "tile layer" (las capas de mapa que se verán en el fondo)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  // Añadir un marcador en la ubicación especificada
-  var marker = L.marker(myLatLng).addTo(map);
-/*
-      var myLatLng = {
-        lat: latitud,
-        lng: longitud
-      };
-
-      var mapOptions = {
-        // How zoomed in you want the map to start at (always required)
-        zoom: 15,
-        scrollwheel: false,
-        disableDefaultUI: false,
-
-        // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(latitud, longitud),
-
-        // How you would like to style the map.
-        // This is where you would paste any style found on Snazzy Maps.
-        styles: [{
-            "featureType": "administrative",
-            "elementType": "labels.text.fill",
-            "stylers": [{
-              "color": "#6195a0"
-            }]
-          },
-          {
-            "featureType": "landscape",
-            "elementType": "all",
-            "stylers": [{
-              "color": "#f2f2f2"
-            }]
-          },
-          {
-            "featureType": "landscape",
-            "elementType": "geometry.fill",
-            "stylers": [{
-              "color": "#ffffff"
-            }]
-          },
-          {
-            "featureType": "poi",
-            "elementType": "all",
-            "stylers": [{
-              "visibility": "off"
-            }]
-          },
-          {
-            "featureType": "poi.park",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#e6f3d6"
-              },
-              {
-                "visibility": "on"
-              }
-            ]
-          },
-          {
-            "featureType": "road",
-            "elementType": "all",
-            "stylers": [{
-                "saturation": -100
-              },
-              {
-                "lightness": 45
-              },
-              {
-                "visibility": "simplified"
-              }
-            ]
-          },
-          {
-            "featureType": "road.highway",
-            "elementType": "all",
-            "stylers": [{
-              "visibility": "simplified"
-            }]
-          },
-          {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#f4d2c5"
-              },
-              {
-                "visibility": "simplified"
-              }
-            ]
-          },
-          {
-            "featureType": "road.highway",
-            "elementType": "labels.text",
-            "stylers": [{
-              "color": "#4e4e4e"
-            }]
-          },
-          {
-            "featureType": "road.arterial",
-            "elementType": "geometry.fill",
-            "stylers": [{
-              "color": "#f4f4f4"
-            }]
-          },
-          {
-            "featureType": "road.arterial",
-            "elementType": "labels.text.fill",
-            "stylers": [{
-              "color": "#787878"
-            }]
-          },
-          {
-            "featureType": "road.arterial",
-            "elementType": "labels.icon",
-            "stylers": [{
-              "visibility": "off"
-            }]
-          },
-          {
-            "featureType": "transit",
-            "elementType": "all",
-            "stylers": [{
-              "visibility": "off"
-            }]
-          },
-          {
-            "featureType": "water",
-            "elementType": "all",
-            "stylers": [{
-                "color": "#eaf6f8"
-              },
-              {
-                "visibility": "on"
-              }
-            ]
-          },
-          {
-            "featureType": "water",
-            "elementType": "geometry.fill",
-            "stylers": [{
-              "color": "#eaf6f8"
-            }]
-          }
-        ]
-
-      };
-
-      var mapElement = document.getElementById('googleMap');
-
-      var map = new google.maps.Map(mapElement, mapOptions);
-
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-      });
-
-    }*/
     /*ajustes ADDEVENT */
      window.addeventasync = function() {
       addeventatc.settings({
