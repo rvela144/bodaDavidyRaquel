@@ -337,7 +337,7 @@ modal.hide();
       let svgContainerfiesta = document.querySelector('.anim-fiesta');
 
     let animFiesta = bodymovin.loadAnimation({
-      container: svgContainerFiesta,
+      container: svgContainerfiesta,
       renderer: 'svg',
       loop: true,
       path:"../img/iconos/img_fiesta.json"
