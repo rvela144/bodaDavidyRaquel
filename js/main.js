@@ -564,7 +564,7 @@ fetch("/api/sugerir_cancion", {
     nombre: "pepe",
     titulo: "abracadabra",
     artista: "Rosalia",
-    link:"https://youtube.com"
+    link:"holaaa"
   })
 })
 .then(r => r.json())
