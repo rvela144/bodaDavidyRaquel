@@ -561,7 +561,7 @@ fetch("/api/sugerir_cancion", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
-    nombre: $("#nombre").val(),
+    nombre: "pepe",
     cancion: $("#cancion").val(),
     artista: $("#artista").val(),
     link: $("#link").val()
@@ -572,3 +572,4 @@ fetch("/api/sugerir_cancion", {
   if (data.error) { alert(data.desc); return; }
   alert("¡Sugerencia enviada!");
 });
+

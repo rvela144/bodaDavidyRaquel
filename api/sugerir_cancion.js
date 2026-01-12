@@ -7,7 +7,11 @@ export default async function handler(req, res) {
 
     // Vercel Functions suelen darte req.body ya parseado si es JSON.
     const { nombre, cancion, artista, link } = req.body || {};
-
+  // Validación mínima
+    if (!cancion || !link) {
+      return res.status(400).json({ error: true, desc: "Faltan campos obligatorios (canción y link)." });
+    }
+     // Reenviar como urlencoded a Apps Script (evita CORS y simplifica)
     const params = new URLSearchParams();
     params.set("nombre", nombre || "");
     params.set("cancion", cancion || "");
