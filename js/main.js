@@ -562,9 +562,9 @@ fetch("/api/sugerir_cancion", {
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     nombre: "pepe",
-    cancion: $("#cancion").val(),
-    artista: $("#artista").val(),
-    link: $("#link").val()
+    titulo: "abracadabra",
+    artista: "Rosalia",
+    link:"https://youtube.com"
   })
 })
 .then(r => r.json())
