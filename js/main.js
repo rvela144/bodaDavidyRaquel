@@ -556,3 +556,18 @@ $('body').on('click', 'a.modal-como-llegar', function(e) {
         }
       });
     };
+
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwNPPTuw_z4VWAyWBrRJO2gKBFcxFrmEUUv7zOPa77IqD8OgMHmUK0exvpr_SJiauWIog/exec";
+
+fetch(ENDPOINT, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    nombre: "Pepe",
+    cancion: "Vivir Mi Vida",
+    artista: "Marc Anthony",
+    link: "https://www.youtube.com/watch?v=..."
+  })
+})
+.then(r => r.json())
+.then(data => console.log(data));

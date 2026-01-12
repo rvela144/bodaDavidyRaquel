@@ -497,6 +497,73 @@
     </div>
   </div>
 </section>
+
+    <!-- Modal sugerir cancion-->
+    <div id="modalSugerirCancion" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="img-top-modal d-flex justify-content-center align-items-start">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <img class="" src= "img/iconos/img_circuloCanciones.svg" alt="">
+
+      </div>
+
+
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">Sugerir Canción</h5>
+
+      </div>
+
+      <div class="modal-body">
+
+
+        <div class="formulario-content">
+
+          <form id="formSugerirCancion" action="">
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="nombreSugerencia" name='nombre' placeholder="Tu nombre">
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="descripcionSugerencia" name='descripcion' placeholder="Nombre canción y autor">
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="linkSugerencia" name='link' placeholder="Si quieres pon el link de YouTube, Spotify, etc.">
+            </div>
+
+
+           <!-- <input type="hidden" name="invitacion" value="ZTlFbkdCVDY2ZnhaaUtVckJWZVZ3Zz09">
+            <input type="hidden" name="token" value="61b3ddbf34f3b2f478bc66e854f89306">
+            <input type="hidden" name="lang" value="es">
+            <input type="hidden" name="country" value="ar">-->
+
+          </form>
+
+        </div>
+
+        <div class="msj-content d-flex flex-column justify-content-center"></div>
+
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" id="sendSugerenciaCancion" class="boton">Sugerir canción</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
   <!-- Musica -->
   <div id="controlador-musica">
     <div id="play-pause-music" data-estado-music="pause" class="music-anim-icon"></div>
