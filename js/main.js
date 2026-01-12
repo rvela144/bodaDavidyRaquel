@@ -7,6 +7,7 @@
     var longitudFiesta = -0.3393689;
     var latitudCeremonia = 40.7128;
     var longitudCeremonia = -74.0060;
+    _pathProducto="../img/iconos/";
 
     // Links Mapas
     var linkMapsFiesta = "https://google.com/maps/dir/Pl.+Luxemburgo,+1,+46200+Paiporta,+Valencia,+España/CV-401,+Km+6,+46910+Alfafar,+Valencia/@39.3793486,-0.3393689,15z/data=!4m19!4m18!1m10!1m1!1s0xd604ef715050e0b:0xcd1b9fad9597f99f!2m2!1d-0.409398!2d39.4325469!3m4!1m2!1d-0.3409338!2d39.388303!3s0xd604bcc256525d9:0x4c3b7a13a2d1bd22!1m5!1m1!1s0xd604bcfad312e03:0xb7f2531d4f416e3b!2m2!1d-0.3335289!2d39.3744809!3e0!5m2!1e4!1e1?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D";
@@ -198,7 +199,7 @@ modal.hide();
     container: svgContainerLoader,
     renderer: 'svg',
     loop: true,
-    path: "../img/iconos/corazon.json"
+    path: _pathProducto+"/corazon.json"
   });
   // Animacion Flores
  
@@ -209,7 +210,7 @@ modal.hide();
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path:"../img/iconos/img_flores01.json"
+      path:_pathProducto+"/img_flores01.json"
     });
 
     var wpFlores1 = new Waypoint({
@@ -229,7 +230,7 @@ modal.hide();
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path:"../img/iconos/img_flores02.json"
+      path:_pathProducto+"/img_flores02.json"
     });
 
     var wpFlores2 = new Waypoint({
@@ -248,7 +249,7 @@ modal.hide();
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path:"../img/iconos/img_flores03.json"
+      path:_pathProducto+"/img_flores03.json"
     });
 
     var wpFlores3 = new Waypoint({
@@ -268,7 +269,7 @@ modal.hide();
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path: "../img/iconos/img_flores04.json"
+      path: _pathProducto+"/img_flores04.json"
     });
 
     var wpFlores4 = new Waypoint({
@@ -287,7 +288,7 @@ modal.hide();
       renderer: 'svg',
       autoplay: false,
       loop: false,
-      path: _pathProducto + "../img/iconos/img_flores05.json"
+      path: _pathProducto + "/img_flores05.json"
     });
 
     var wpFlores5 = new Waypoint({
@@ -306,7 +307,7 @@ modal.hide();
     container: svgContainerFlechaScroll,
     renderer: 'svg',
     loop: true,
-    path: "../img/iconos/flechaAbajo.json"
+    path: _pathProducto+"/flechaAbajo.json"
   });
 
    animFlechaAbajo.setSpeed(0.6);
@@ -318,7 +319,7 @@ modal.hide();
       container: svgContainerCorazonFalta,
       renderer: 'svg',
       renderer: true,
-      path: "../img/iconos/corazon-falta.json"
+      path: _pathProducto+"/corazon-falta.json"
     });
 
     /*ANIMACION ANILLOS */
@@ -328,7 +329,7 @@ modal.hide();
       container: svgContainerAnillos,
       renderer: 'svg',
       loop: true,
-      path:"../img/iconos/img_anillos.json"
+      path:_pathProducto+"/img_anillos.json"
     });
 
     animAnillos.play();
@@ -341,7 +342,7 @@ modal.hide();
       container: svgContainerfiesta,
       renderer: 'svg',
       loop: true,
-      path:"../img/iconos/img_fiesta.json"
+      path:_pathProducto+"/img_fiesta.json"
     });
 
     animFiesta.play();
@@ -354,7 +355,7 @@ modal.hide();
       container: svgContainerMusica,
       render: 'svg',
       loop: true,
-      path: _pathProducto + "../img/iconos/img_canciones.json"
+      path: _pathProducto + "/img_canciones.json"
     });
 
     animMusica.play();
@@ -366,7 +367,7 @@ modal.hide();
       container: svgContainerVestuario,
       render: 'svg',
       loop: true,
-      path: _pathProducto + "../img/iconos/vestuario.json"
+      path: _pathProducto + "/vestuario.json"
     });
 
     animVestuario.play();
@@ -381,7 +382,7 @@ modal.hide();
       container: svgContainerTips,
       render: 'svg',
       loop: true,
-      path: _pathProducto + "../img/iconos/tips.json"
+      path: _pathProducto + "/tips.json"
     });
 
     animTips.play();
@@ -396,7 +397,7 @@ modal.hide();
       container: svgContainerHotel,
       render: 'svg',
       loop: true,
-      path: _pathProducto + "../img/iconos/hotel.json"
+      path: _pathProducto + "/hotel.json"
     });
 
     animHotel.play();
@@ -411,7 +412,7 @@ modal.hide();
       container: svgContainerBus,
       render: 'svg',
       loop: true,
-      path: _pathProducto + "../img/iconos/bus.json"
+      path: _pathProducto + "/bus.json"
     });
 
     animBus.play();
