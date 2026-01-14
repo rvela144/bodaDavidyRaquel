@@ -1,5 +1,5 @@
   // Obtenemos el formulario, el input de contraseña y el mensaje de error
-  const loginForm = document.getElementById('loginForm');
+  /*const loginForm = document.getElementById('loginForm');
   const passwordStatic="boda1234";
   const passwordInput = document.getElementById('password');
   const errorMessage = document.getElementById('errorMessage');
@@ -22,4 +22,16 @@
       errorMessage.classList.remove('d-none');
       errorMessage.textContent = 'Contraseña incorrecta.';
     }
-  });
+  });*/
+
+  document.getElementById("loginBtn").addEventListener("click", () => {
+  const pass = document.getElementById("password").value;
+  const error = document.getElementById("loginError");
+
+  if (pass === "boda1234") {
+    localStorage.setItem("invitacion_ok", "1");
+    window.location.href = "../index.html";
+  } else {
+    error.textContent = "Contraseña incorrecta";
+  }
+});

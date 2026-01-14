@@ -87,14 +87,19 @@ if (preloader) {
   // Detener animación de carga
 
   animLoader.destroy();
-authenticado=sessionStorage.getItem('authenticated');
+  //redireccionar al login o al main
+/*authenticado=sessionStorage.getItem('authenticated');
  if (!authenticado) {
       // Si no está autenticado, redirige al login.html
       window.location.href = '/login/login.html';
    }else{
     modal.show()
-   }
-
+   }*/
+if (localStorage.getItem("invitacion_ok") !== "1") {
+  window.location.href = "login.html";
+}else{
+   modal.show()
+}
 });
 
 
