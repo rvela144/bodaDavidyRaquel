@@ -35,3 +35,15 @@
     error.textContent = "Contraseña incorrecta";
   }
 });
+
+/*ANIMACION ANILLOS LOGIN */
+      let svgContainerAnillos = document.querySelector('.login-icon');
+
+    let animAnillosLogin = bodymovin.loadAnimation({
+      container: svgContainerAnillos,
+      renderer: 'svg',
+      loop: true,
+      path:"../img/iconos/img_anillos.json"
+    });
+
+    animAnillosLogin.play();
