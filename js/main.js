@@ -96,7 +96,7 @@ if (preloader) {
     modal.show()
    }*/
 if (localStorage.getItem("invitacion_ok") !== "1") {
-  window.location.href = "login.html";
+  window.location.href = "/login/login.html";
 }else{
    modal.show()
 }
