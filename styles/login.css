@@ -66,22 +66,27 @@
   transition: background-color .2s ease, box-shadow .2s ease;
 }
 
-.login-card button:hover {
-  background-color: #a8895d;
-  box-shadow: 0 8px 20px rgba(183,154,106,.35);
-}
+
 
 .login-error {
   margin-top: 12px;
   color: #c0392b;
   font-size: 14px;
 }
+.botonLogin{
+  position: relative;
+  width: 100%;
+  transition: transform 0.25s ease, color .25s ease;
+}
+.botonLogin:hover {
+  transform: scale(1.03);
+}
 .botonLogin button{
   width: 100%;
   border: none !important;
   outline: none !important;
   background: transparent;
-  padding: 12px 6px 16px; /* espacio inferior para que no pise la línea */
+  padding: 12px 6px 12px; /* espacio inferior para que no pise la línea */
   font-size: 15px;
   color: #6a6258;
 }
@@ -90,7 +95,7 @@
   left: 0;
   bottom: 2px;
   width: 100%;
-  height: 14px;          /* ajusta según tu imagen */
+  height: 16px;          /* ajusta según tu imagen */
   object-fit: contain;   /* mantiene proporción */
   pointer-events: none;  /* para que no interfiera con el click */
   opacity: .9;
