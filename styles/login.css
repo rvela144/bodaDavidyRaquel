@@ -76,16 +76,7 @@
   color: #c0392b;
   font-size: 14px;
 }
-
-
-.input-decorado{
-  position: relative;
-  width: 100%;
-  margin-bottom: 22px;
-}
-
-/* Input sin bordes */
-.input-decorado input{
+.botonLogin button{
   width: 100%;
   border: none !important;
   outline: none !important;
@@ -93,21 +84,4 @@
   padding: 12px 6px 16px; /* espacio inferior para que no pise la línea */
   font-size: 15px;
   color: #6a6258;
-}
-
-/* Evita el borde azul de algunos navegadores */
-.input-decorado input:focus{
-  box-shadow: none !important;
-}
-
-/* La "línea" en forma de imagen */
-.input-decorado .linea-decorativa{
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 14px;          /* ajusta según tu imagen */
-  object-fit: contain;   /* mantiene proporción */
-  pointer-events: none;  /* para que no interfiera con el click */
-  opacity: .9;
 }
