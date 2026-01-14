@@ -218,13 +218,14 @@
     <div class="row">
 
       <div class="col-md-6 mx-auto col-ceremonia text-center">
-
+<div class="iconos-evento">
         <div class="anim-anillos"></div>
-
+        <div class="anim-fiesta"></div>
+</div>
         <br>
 
         <h3>
-          Ceremonia        </h3>
+          Ceremonia  ✦  Celebración     </h3>
 
         <div class="info-col">
 
@@ -235,10 +236,12 @@
 
               <span class="nameBtn">Agendar</span>
 
-              <span class="start">09/10/2026 19:00 PM</span>
-              <span class="end">09/10/2026 05:00 PM</span>
+              <span class="start">2026-10-09 19:00</span>
+              <span class="end">2026-10-10 05:00</span>
               <span class="timezone">Europe/Madrid</span>
-              <span class="title">Boda de David y Raquel (Ceremonia)</span>
+              <span class="title">Boda de Raquel y David (Ceremonia/Celebración)</span>
+              <span class="description">Ceremonia y celebración en el mismo lugar.</span>
+              <span class="location">Carrer d'Isabel la Catòlica, 13, L’Eixample, Valencia</span>
 
             </a>
           </div>
@@ -258,55 +261,6 @@
         </div>
 
       </div>
-
-
-      <div class="col-md-6 mx-auto col-fiesta text-center">
-
-        <div class="anim-fiesta"></div>
-
-        <br>
-
-        <h3>
-          Celebración        </h3>
-
-        <div class="info-col">
-
-          <div class="info-box">
-            <h6>Día</h6>
-            <p>Sábado 19 de Octubre - 13:00 h</p>
-            <a href="#" class="boton addeventatc">
-              <span class="nameBtn">Agendar</span>
-
-              <span class="start">10/19/2024 01:00 PM</span>
-              <span class="end">10/19/2024 10:00 PM</span>
-              <span class="timezone">Europe/Madrid</span>
-              <span class="title">Boda de Raquel y David</span>
-            </a>
-          </div>
-
-          <div class="info-box">
-            <h6>Lugar</h6>
-            <p>Jardines La Hacienda</p>
-            <a href="#" data-evento="Fiesta" class="boton confirmar-asistencia">Confirmar asistencia</a>
-          </div>
-
-          <div class="info-box">
-            <h6>Dirección</h6>
-            <p>Camino de la Tanca s/n, El Puig de Santa Maria, Valencia</p>
-            <a href="#" data-evento="Fiesta" class="boton modal-como-llegar">¿Cómo llegar?</a>
-          </div>
-
-          <!-- <div class="info-box">
-            <h6>Tarjeta</h6>
-            <p>Conoce todos los detalles sobre las tarjetas</p>
-            <a href="#" class="boton modal-tarjeta">Ver más</a>
-          </div> -->
-
-        </div>
-
-      </div>
-
-
     </div>
   </div>
 </section>
@@ -389,87 +343,7 @@
       </div>
 
 
-
-
-      <!-- Dress Code -->
-      <div class="col-md-6 item-fiesta">
-
-        <div class="w-100 content-item-fiesta d-flex flex-column justify-content-between align-items-center">
-
-          <h3>Dress Code</h3>
-
-          <div class="d-flex justify-content-center align-items-center content-anim-fiesta">
-            <div class="anim-vestuario"></div>
-          </div>
-
-          <p>
-            Una orientación para <br> tu vestuario          </p>
-
-          <a href="#" class="boton modal-vestuario">
-            Ver más          </a>
-
-        </div>
-
-      </div>
-
-
-
-
-      <!-- Notas -->
-      <div class="col-md-6 item-fiesta">
-
-        <div class="w-100 content-item-fiesta d-flex flex-column justify-content-between align-items-center">
-
-          <h3>Tips y Notas</h3>
-
-
-          <div class=" d-flex justify-content-center align-items-center content-anim-fiesta">
-            <div class="anim-tips"></div>
-          </div>
-
-
-          <p>
-            Información adicional <br> para tener en cuenta          </p>
-
-
-          <a href="#" class="boton  modal-tips">
-            + Info          </a>
-
-        </div>
-
-      </div>
-
-
-
-
-      <!-- Hotel -->
-      <!-- <div class="col-md-6 item-fiesta">
-
-        <div class="w-100 content-item-fiesta d-flex flex-column justify-content-between align-items-center">
-
-          <h3>Hoteles</h3>
-
-
-          <div class=" d-flex justify-content-center align-items-center content-anim-fiesta">
-            <div class="anim-hotel"></div>
-          </div>
-
-
-          <p>
-            ¿Necesitas alojamiento?          </p>
-
-
-          <a href="#" class="boton  modal-hotel">
-            Ver más          </a>
-
-        </div>
-
-      </div> -->
-
-
-
-
-      <!-- Bus -->
+      <!-- parquin -->
       <div class="col-md-6 item-fiesta">
 
         <div class="w-100 content-item-fiesta d-flex flex-column justify-content-between align-items-center">
@@ -497,6 +371,7 @@
 
     </div>
   </div>
+    </section>
   <!-- Regalos-->
     <section class="regalos">
 
@@ -521,7 +396,44 @@
 
     </div>
   </div>
-</section>
+  </section>
+
+   <!-- Modal bus-->
+    <div id="modalBus" class="modal modal-responsive fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="img-top-modal d-flex justify-content-center align-items-start">
+
+        <button id="cerrarParking" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <img class="" src="img/iconos/bus.svg" alt="">
+
+      </div>
+
+
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">Parking</h5>
+
+      </div>
+
+      <div class="modal-body">
+
+        <p>•  Hay parking público fuera de la Masía Santarrita . <br>
+
+      </div>
+
+
+      <div class="modal-footer"></div>
+
+
+    </div>
+  </div>
+</div>
 <!-- Modal regalos-->
     <div id="modalRegalos" class="modal modal-responsive fade" tabindex="-1">
   <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -529,11 +441,11 @@
 
       <div class="img-top-modal d-flex justify-content-center align-items-start">
 
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button id="cerrarRegalos" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <img class="" src="https://fixdate.io/invitacion-final/BodaMarinayOleksandr/img/img_circuloRegalo.svg" alt="">
+        <img class="" src="img/iconos/img_circuloRegalo.svg" alt="">
 
       </div>
 

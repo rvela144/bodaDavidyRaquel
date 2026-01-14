@@ -366,49 +366,6 @@ modal.hide();
 
     animMusica.play();
 
-    /* Animacion Vestuario */
-    let svgContainerVestuario = document.querySelector('.anim-vestuario');
-
-    let animVestuario = bodymovin.loadAnimation({
-      container: svgContainerVestuario,
-      render: 'svg',
-      loop: true,
-      path: _pathProducto + "/vestuario.json"
-    });
-
-    animVestuario.play();
-
-
-
- /* Animacion Tips */
-
-    let svgContainerTips = document.querySelector('.anim-tips');
-
-    let animTips = bodymovin.loadAnimation({
-      container: svgContainerTips,
-      render: 'svg',
-      loop: true,
-      path: _pathProducto + "/tips.json"
-    });
-
-    animTips.play();
-
-
-
-/*Animacion Hotel*/
- 
-    let svgContainerHotel = document.querySelector('.anim-hotel');
-
-    let animHotel = bodymovin.loadAnimation({
-      container: svgContainerHotel,
-      render: 'svg',
-      loop: true,
-      path: _pathProducto + "/hotel.json"
-    });
-
-    animHotel.play();
-  
-
 
   /* Animacion Bus */
   
@@ -599,15 +556,60 @@ document.body.addEventListener("click", function (e) {
 });
 
 //modal regalos
-$('body').on('click', 'a.modal-regalos', function(e) {
+document.body.addEventListener('click', function (e) {
+  const link = e.target.closest('a.modal-regalos');
+  if (!link) return;
+
   e.preventDefault();
 
-  $('#modalRegalos').modal({
-    backdrop: 'static'
-  })
+  const modalEl = document.getElementById('modalRegalos');
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl, {
+    backdrop: 'static',
+    keyboard: false
+  });
 
-  $('#iban-msj').text('');
+  modal.show();
+
+  const ibanMsg = document.getElementById('iban-msj');
+  if (ibanMsg) ibanMsg.textContent = '';
 });
+
+//modal parking
+document.body.addEventListener('click',function(e){
+  const link = e.target.closest('a.modal-bus');
+  if (!link) return;
+  e.preventDefault();
+  const modalEl=document.getElementById('modalBus');
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl,{
+    backdrop:'static',keyboard:false
+  });
+  modal.show();
+})
+//funcion para cerrar modal regalos 
+document.body.addEventListener("click", function (e) {
+  const btn = e.target.closest("#cerrarRegalos");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const modalEl = document.getElementById("modalRegalos");
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+  modal.hide();
+});
+//funcion para cerrar modal  parking 
+document.body.addEventListener("click", function (e) {
+  const btn = e.target.closest("#cerrarParking");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const modalEl = document.getElementById("modalBus");
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+  modal.hide();
+});
+
 // Validacion de form.
  function isOkSugerirCancion() {
   // Remuevo mensajes de error anteriores

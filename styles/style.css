@@ -1317,3 +1317,9 @@ section.footer .addeventatc span.nameBtn:hover{
   color:#fff;
   background-color: #BFA880;
 }
+.iconos-evento {
+  display: flex;
+  justify-content: center; /* centra en horizontal */
+  align-items: center;     /* centra en vertical */
+  gap: 20px;               /* separación entre iconos */
+}
