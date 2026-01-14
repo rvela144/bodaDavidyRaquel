@@ -422,6 +422,18 @@ modal.hide();
     });
 
     animBus.play();
+
+    /*Animacion regalo */
+      let svgContainerRegalos = document.querySelector('.anim-regalos');
+
+    let animRegalos = bodymovin.loadAnimation({
+      container: svgContainerRegalos,
+      render: 'svg',
+      loop: true,
+      path: _pathProducto + "/img_iconoRegalos.json"
+    });
+
+    animRegalos.play();
    /* PARALLAX CARATULA */
 
     if (device == 'mobile' || $(window).width() < 768) {
@@ -586,7 +598,16 @@ document.body.addEventListener("click", function (e) {
   modal.show();
 });
 
+//modal regalos
+$('body').on('click', 'a.modal-regalos', function(e) {
+  e.preventDefault();
 
+  $('#modalRegalos').modal({
+    backdrop: 'static'
+  })
+
+  $('#iban-msj').text('');
+});
 // Validacion de form.
  function isOkSugerirCancion() {
   // Remuevo mensajes de error anteriores
