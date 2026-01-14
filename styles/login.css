@@ -24,7 +24,7 @@
      position: absolute;
   left: 50%;
   top: 0;
-  transform: translate(-50%, -55%); /* lo sube por encima de la tarjeta */
+  transform: translate(-50%, -75%); /* lo sube por encima de la tarjeta */
   height: 128px;
 }
 
