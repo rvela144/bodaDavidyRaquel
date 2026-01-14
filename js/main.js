@@ -109,12 +109,12 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('reproductor-musica-fondo', {
     height: '0',            // “oculto” (ojo con Términos de Uso)
     width:  '0',
-    videoId: '12CEAlpGVXM', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE
+    videoId: 'dQw4w9WgXcQ', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE ,12CEAlpGVXM 
     playerVars: {
       autoplay: 0,
         loop: 1,
         start: 0,
-        playlist:'12CEAlpGVXM'
+        playlist:'dQw4w9WgXcQ'
     },
     events: {
        onReady: onPlayerReady
@@ -770,23 +770,5 @@ document.body.addEventListener("click", function (e) {
     }
   }
 
-/*fetch("/api/sugerir_cancion", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    nombre: "pepe",
-    titulo: "abracadabra",
-    artista: "Rosalia",
-    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  })
-})
-.then(async (r) => {
-  const text = await r.text();
-  console.log("HTTP", r.status, "RAW:", text);
-  try { return JSON.parse(text); } catch { return { parseError: true, raw: text }; }
-})
-.then((data) => {
-  console.log("DATA:", data);
-})
-.catch(console.error);*/
+
 

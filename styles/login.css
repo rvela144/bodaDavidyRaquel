@@ -48,19 +48,21 @@
 }
 
 .login-card button {
-  width: 100%;
-  background: #1e6dfd;
+ width: 100%;
+  background-color: #b79a6a; /* dorado arena */
   border: none;
-  color: #fff;
+  color: #ffffff;
   padding: 13px;
   border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background .2s ease;
+  transition: background-color .2s ease, box-shadow .2s ease;
 }
 
 .login-card button:hover {
-  background: #1558cc;
+  background-color: #a8895d;
+  box-shadow: 0 8px 20px rgba(183,154,106,.35);
 }
 
 .login-error {
