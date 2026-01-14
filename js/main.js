@@ -28,10 +28,7 @@ const modalMapa = new bootstrap.Modal(document.getElementById('modalMapa'),{
   backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
   keyboard: false      // Desactiva el cierre con la tecla Escape
 });
-const modalSugerirCancion = new bootstrap.Modal(document.getElementById('modalSugerirCancion'),{
-  backdrop: 'static', // Previene que el modal se cierre al hacer clic fuera de él
-  keyboard: false      // Desactiva el cierre con la tecla Escape
-});
+
 let authenticado = false;
 let player;
 let device;
@@ -744,10 +741,16 @@ document.body.addEventListener("click", async function (e) {
 });
 
 //funcion para cerrar sugerir cancion 
+document.body.addEventListener("click", function (e) {
+  const btn = e.target.closest("#cerrarSugerirCancion");
+  if (!btn) return;
 
- document.getElementById('cerrarSugerirCancion').addEventListener('click', function  (e) {
-  
- modalSugerirCancion.hide();
+  e.preventDefault();
+
+  const modalEl = document.getElementById("modalSugerirCancion");
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+  modal.hide();
 });
 
 /* Funciones y varialbes globales */
