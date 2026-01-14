@@ -16,12 +16,18 @@
   max-width: 420px;
   box-shadow: 0 25px 50px rgba(0,0,0,.15);
   text-align: center;
+  position: relative;           /* clave para el absolute del icono */
+  overflow: visible;     
 }
 
-.login-icon img {
-  width: 60px;
-  margin-bottom: 15px;
+.login-icon{
+     position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -55%); /* lo sube por encima de la tarjeta */
+  height: 128px;
 }
+
 
 .login-card h2 {
   font-family: "Playfair Display", serif;
