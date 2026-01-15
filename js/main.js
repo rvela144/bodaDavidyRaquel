@@ -398,18 +398,18 @@ modal.hide();
     // Aceptar webp?
     // TODO:cambiar imagenes 
     if (support_format_webp()) {
-      var imageParallax = '/img/fotos/WhatsApp-Image-2025-10-24-at-07.08.21.webp';
+      var imageParallax = '../img/fotos/raquelDavid.jpeg';
     } else {
-      var imageParallax = '/img/fotos/imagen1.jpg';
+      var imageParallax = '../img/fotos/raquelDavid.jpeg';
     }
 
   } else {
 
     // Aceptar webp?
     if (support_format_webp()) {
-      var imageParallax = '/img/fotos/WhatsApp-Image-2025-10-24-at-07.08.20.webp';
+      var imageParallax = '../img/fotos/pedidaRaquelDavid.jpeg';
     } else {
-      var imageParallax = '/img/fotos/imagen2.jpg';
+      var imageParallax = '../img/fotos/raquelDavid.jpeg';
     }
 
   }
