@@ -1,0 +1,354 @@
+:root{
+  --bg: #fbf7f2;
+  --shadow: 0 18px 40px rgba(0,0,0,.16);
+
+  /* AJUSTES CLAVE (tú los retocas si hace falta) */
+  --paper-slot: 44%;        /* altura (desde abajo) de la ranura por donde sale el papel */
+  --flap-hinge-y: 7%;       /* bisagra de la solapa (porcentaje desde arriba) */
+}
+
+*{ box-sizing: border-box; }
+
+.page{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(184,155,106,.10), transparent 55%),
+    radial-gradient(circle at 80% 60%, rgba(184,155,106,.08), transparent 55%),
+    var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 28px;
+}
+
+.stage{
+  width: min(900px, 92vw);
+  display:flex;
+  justify-content:center;
+}
+
+/* CONTENEDOR (mantén el ratio de tus imágenes) */
+.env{
+  position: relative;
+  width: min(900px, 92vw);
+  aspect-ratio: 1707 / 1272; /* si tus PNG son de otro tamaño, cámbialo */
+  height: auto;
+  filter: drop-shadow(0 22px 32px rgba(0,0,0,.18));
+  perspective: 1400px;
+  perspective-origin: 50% 18%;
+}
+
+/* IMÁGENES de sobre */
+.env-open,
+.env-closed{
+  position:absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events:none;
+}
+
+.env-open{
+  z-index: 10;
+  opacity: 0; /* oculto al inicio */
+  transition: opacity .55s ease;
+}
+
+.env-closed{
+  z-index: 40;
+  opacity: 1;
+  transition: opacity .55s ease;
+}
+
+/* SOLAPA (opcional) */
+.flap{
+  position:absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events:none;
+
+  transform-origin: 50% var(--flap-hinge-y);
+  transform: rotateX(0deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+
+  transition: transform 1.15s cubic-bezier(.2,.9,.2,1), opacity .35s ease;
+}
+
+.flap-img{
+  position:absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  backface-visibility: hidden;
+  transform: translateZ(2px);
+}
+
+/* SELLO */
+.seal{
+  position:absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: clamp(110px, 18vw, 160px);
+  aspect-ratio: 1/1;
+
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  z-index: 80;
+  transition: transform .2s ease, opacity .35s ease;
+}
+
+.seal:hover{
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.seal-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events:none;
+}
+
+/* PAPEL */
+
+
+
+.paper-title{
+  margin: 0 0 10px;
+  font-size: clamp(22px, 3.4vw, 32px);
+  color: #6a6258;
+}
+
+.paper-sub{
+  margin: 0 0 18px;
+  color: #8a8277;
+  letter-spacing: .4px;
+}
+
+.btn{
+  border: none;
+  background: #b89b6a;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+.btn:hover{
+  background: #a78855;
+  transform: scale(1.03);
+}
+
+/* =========================
+   ESTADOS (clases)
+========================= */
+
+/* 0) sello fuera */
+.env.is-seal-broken .seal{
+  pointer-events:none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.86);
+}
+
+/* 1) cambiar a abierto */
+.env.is-opening .env-closed{ opacity: 0;    pointer-events: none;}
+.env.is-opening .env-open{ opacity: 1; }
+
+/* si hay solapa separada, se abre */
+.env.is-opening .flap{
+  transform: rotateX(-120deg);
+  z-index: 12; /* detrás del papel cuando salga */
+}
+
+
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .env-open,.env-closed,.flap,.paper,.paper-fold,.paper-card,.paper-inner,.seal{
+    transition:none !important;
+  }
+}
+/*.paper-mask{
+    
+  position: absolute;
+  left: 50%;
+  width: 65%;
+  height: 55%;
+  bottom: var(--paper-slot);  
+  transform: translateX(-50%);
+  overflow: hidden;            
+  z-index: 20;                
+  pointer-events: none;
+}*/
+.paper-mask{
+  position:absolute;
+  left:50%;
+  width:65%;
+  height:55%;
+  bottom: var(--paper-slot);
+  transform:translateX(-50%);
+  overflow:hidden;          /* recorta */
+  z-index:20;
+  pointer-events:none;
+}
+/* Papel: empieza muy abajo (dentro) y comprimido */
+.paper{
+  position:absolute;
+  left:50%;
+  bottom:-40%;
+  width:88%;
+  transform: translateX(-50%) translateY(60%);
+  opacity: 1;               /* CLAVE: ya no aparece de la nada */
+  z-index:21;
+  pointer-events:none;
+  transition: transform 1.2s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Doble pliegue visible cuando asoma */
+.paper-fold{
+  height: 54px;
+  border-radius: 12px 12px 10px 10px;
+  background: linear-gradient(180deg, #fff, #efe8dd);
+  box-shadow: 0 10px 18px rgba(0,0,0,.12);
+  transform-origin: top center;
+  transform: rotateX(75deg);
+  opacity: 1;
+  transition: transform .9s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Hoja comprimida al salir */
+.paper-card{
+  margin-top: -12px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(0,0,0,.16);
+  overflow: hidden;
+
+  transform-origin: top center;
+  transform: scaleY(.14);
+  opacity: 1;
+
+  transition: transform 1.05s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Texto oculto hasta el final */
+.paper-inner{
+  padding: 28px 22px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+/* ===== ESTADOS ===== */
+
+/* 1) sale papel: ahora se ve recortado por paper-mask => efecto “desde dentro” */
+.env.is-paper-out .paper{
+  opacity: 1;
+  transform: translateX(-50%) translateY(-35%);
+}
+.env.is-paper-out .paper-fold{
+  opacity:1;
+  transform: rotateX(0deg);
+}
+.env.is-paper-out .paper-card{
+  opacity: 1;
+  transform: scaleY(.22);
+}
+
+/* 2) cuando “se posa”, lo sacamos de la máscara y lo ponemos por encima del sobre */
+.env.is-paper-drop .paper-mask{
+  overflow: visible;           /* deja de recortar al posarse */
+  z-index: 80;                 /* pasa por delante del sobre */
+}
+.env.is-paper-drop .paper{
+  transform: translateX(-50%) translateY(-5%);
+}
+
+/* 3) se despliega */
+.env.is-paper-unfold .paper-card{
+  transform: scaleY(1);
+}
+
+/* 4) aparece el texto */
+.env.is-message .paper-inner{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.env.is-paper-peek .paper{
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10%);
+}
+.env.is-paper-peek .paper-fold{
+  opacity: 1;
+  transform: rotateX(10deg);
+}
+.env.is-paper-peek .paper-card{
+  opacity: 1;
+  transform: scaleY(.18);
+}
+.env.is-paper-unfold .paper-mask{
+  overflow: visible;
+}
+
+.env{ position:relative; }
+
+.env-open{ z-index:10; opacity:0; transition:opacity .55s ease; }
+.env-closed{ z-index:60; opacity:1; transition:opacity .55s ease; }
+
+/* papel por encima del fondo */
+.paper-mask{ z-index:20; }
+.paper{ z-index:21; }
+
+/* “frontal del bolsillo” por encima del papel */
+.env-front{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  pointer-events:none;
+  z-index:40;
+  opacity:0;                 /* aparece cuando abrimos */
+  transition: opacity .55s ease;
+
+  /* RECORTE: esto tapa el papel con el “bolsillo” */
+  /* Ajusta puntos si hiciera falta */
+  clip-path: polygon(0% 52%, 100% 52%, 100% 100%, 0% 100%);
+}
+
+.seal{ z-index:80; }
+
+.env.is-opening .env-closed{ opacity:0; pointer-events:none; }
+.env.is-opening .env-open{ opacity:1; }
+.env.is-opening .env-front{ opacity:1; }
+.env.is-paper-drop .paper-mask{ overflow: visible; }
+
+.env.is-paper-unfold .paper-card{
+  transform: scaleY(1);
+}
+.env.is-seal-broken .seal{
+  pointer-events:none;
+  opacity:0;
+  transform: translate(-50%, -50%) scale(.8) rotate(-14deg);
+  filter: blur(.3px);
+}
+.seal{ transform-origin: 50% 65%; }
+
+
+#btnContinuar{
+  pointer-events: auto;
+}

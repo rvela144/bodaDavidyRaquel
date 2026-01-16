@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación</title>
+  <link rel="stylesheet" href="../styles/cartaInvitacion.css" />
+</head>
+
+<body class="page">
+  <main class="wrap">
+   <section class="stage" aria-label="Carta de invitación">
+  <div class="env" id="env">
+
+    <!-- ABIERTO (fondo) -->
+    <img class="env-open" src="../img/carta/base.png" alt="" aria-hidden="true" />
+
+    <!-- CERRADO (encima al inicio) -->
+    <img class="env-closed" src="../img/carta/completo.png" alt="" aria-hidden="true" />
+
+    <!-- PAPEL (sale desde dentro) -->
+    <div class="paper-mask" aria-hidden="true">
+      <div class="paper" id="paper" aria-hidden="true">
+        <div class="paper-fold" aria-hidden="true"></div>
+
+        <div class="paper-card">
+          <div class="paper-inner">
+            <h1 class="paper-title">Boda </h1>
+            <p class="paper-sub">Raquel &amp; David</p>
+            <button class="btn" id="btnContinuar" type="button">Continuar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUCO: “frontal del sobre” recortado para tapar el papel mientras sale -->
+    <img class="env-front" src="../img/carta/base.png" alt="" aria-hidden="true" />
+
+    <!-- SELLO -->
+    <button class="seal" id="sealBtn" type="button" aria-label="Abrir invitación">
+      <img class="seal-img" src="../img/carta/sello.png" alt="" aria-hidden="true" />
+    </button>
+
+  </div>
+</section>
+  </main>
+
+  <script src="../js/cartaInvitacion.js"></script>
+</body>
+</html>

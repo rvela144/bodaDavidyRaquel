@@ -30,7 +30,13 @@
 <link rel="icon" sizes="16x16 32x32 64x64" href="/img/favicon/favicon.ico">
 <meta name="msapplication-TileColor" content="#FFFFFF">   
     
+<script>
+  const mostrarCarta = sessionStorage.getItem("mostrarCarta") === "true";
 
+  if (mostrarCarta) {
+    window.location.replace("/cartaInvitacion/cartaInvitacion.html");
+  }
+</script>
 
 
     
@@ -241,7 +247,7 @@
               <span class="timezone">Europe/Madrid</span>
               <span class="title">Boda de Raquel y David (Ceremonia/Celebración)</span>
               <span class="description">Ceremonia y celebración en el mismo lugar.</span>
-              <span class="location">Carrer d'Isabel la Catòlica, 13, L’Eixample, Valencia</span>
+              <span class="location">Masía Santarrita, CV-401, Km 6, 46910 Alfafar, Valencia</span>
 
             </a>
           </div>
@@ -254,7 +260,7 @@
 
           <div class="info-box">
             <h6>Dirección</h6>
-            <p>Carrer d'Isabel la Catòlica, 13, L'Eixample, Valencia</p>
+            <p>Masía Santarrita, CV-401, Km 6, 46910 Alfafar, Valencia</p>
             <a href="#" data-evento="Ceremonia" class="boton modal-como-llegar">¿Cómo llegar?</a>
           </div>
 
@@ -538,6 +544,70 @@
     </div>
   </div>
 </div>
+
+<section class="footer">
+  <div class="container">
+
+    <div class="row">
+
+
+
+      <div class="col-md-6 col-nombres-footer d-flex justify-content-center align-items-center">
+
+        <h4>
+          Raquel          <br class='d-md-none'>
+          <span>&</span>
+          <br class='d-md-none'>
+          David        </h4>
+
+      </div>
+
+
+      <div class="col-md-6 col-acciones-footer d-flex justify-content-center align-items-center">
+
+        <ul>
+
+          <li>
+            <a href="#" data-evento="Ceremonia" class="confirmar-asistencia">Confirmar asistencia a la ceremonia</a>
+          </li>
+
+          <li>
+            <a href="#" data-evento="Fiesta" class="confirmar-asistencia">Confirmar asistencia a la celebración</a>
+          </li>
+
+          <li>
+            <a href="#" class="sugerir-cancion">Sugerir canción</a>
+          </li>
+
+          <li>
+            <div title="" class="addeventatc">
+
+              <span class="nameBtn">Agendar celebración y Ceremonia</span>
+
+              <span class="start">2026-10-09 19:00</span>
+              <span class="end">2026-10-10 05:00</span>
+              <span class="timezone">Europe/Madrid</span>
+              <span class="title">Boda de Raquel y David (Ceremonia/Celebración)</span>
+              <span class="description">Ceremonia y celebración en el mismo lugar.</span>
+              <span class="location">Masía Santarrita, CV-401, Km 6, 46910 Alfafar, Valencia</span>
+
+            </div>
+          </li>
+
+       
+
+        </ul>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+</section>
+  
+   
   <!-- Musica -->
   <div id="controlador-musica">
     <div id="play-pause-music" data-estado-music="pause" class="music-anim-icon"></div>
