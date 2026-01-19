@@ -40,7 +40,7 @@
        e.preventDefault();
 
     // marca que ya vio la carta
-    sessionStorage.setItem("mostrarCarta", "false");
+    localStorage.setItem("cartaVista", "true");
     // vuelve al index principal
     window.location.href = "../index.html";
     });

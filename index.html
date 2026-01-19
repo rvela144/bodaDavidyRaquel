@@ -29,18 +29,16 @@
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
 <link rel="icon" sizes="16x16 32x32 64x64" href="/img/favicon/favicon.ico">
 <meta name="msapplication-TileColor" content="#FFFFFF">   
-    
-<script>
-  const mostrarCarta = sessionStorage.getItem("mostrarCarta") === "true";
+      
+    <script>
+    const cartaVista = localStorage.getItem("cartaVista") === "true";
 
-  if (mostrarCarta) {
-    window.location.replace("/cartaInvitacion/cartaInvitacion.html");
-  }
-</script>
-
-
-    
-  
+    if (cartaVista) {
+      window.location.replace("/home.html"); // tu web real
+    } else {
+      window.location.replace("/cartaInvitacion/cartaInvitacion.html");
+    }
+  </script>
 <body>
    
     <!-- Animación -->
@@ -52,31 +50,6 @@
   </div>
 
 </div>
-<!--LOGIN DE ACCESO-
-<div id="loginContainer" class="container d-none justify-content-center align-items-center min-vh-100">
-      <div class="card shadow-lg" style="width: 25rem;">
-        <div class="card-body">
-          <h3 class="card-title text-center mb-4">Acceso a la Invitación</h3>
-
-          <form id="loginForm">
-            <div class="mb-3">
-              <label for="password" class="form-label">Contraseña</label>
-              <input type="password" id="password" class="form-control" required>
-            </div>
-
-            <div id="errorMessage" class="alert alert-danger d-none" role="alert">
-              Contraseña incorrecta.
-            </div>
-
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary">Entrar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>-->
-   
-<!-- END animación carga -->
 
   <!--PORTADA DE BIENVENIDA-->
   <div id="portadaBienvenida" class="modal fade" tabindex="-1">
