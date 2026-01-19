@@ -268,7 +268,7 @@
   .env{
     height: 70dvh;              /* sube/baja 66–78 según gusto */
     width: auto;                /* el ancho lo decide el aspect-ratio */
-    max-width: 175vw;            /* no se sale lateralmente */
+    max-width: 155vw;            /* no se sale lateralmente */
     aspect-ratio: 1707 / 1272;
 
     /* el resto igual, solo un poco menos agresivo */
