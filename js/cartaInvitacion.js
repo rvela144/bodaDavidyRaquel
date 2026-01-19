@@ -92,7 +92,7 @@
     // marca que ya vio la carta
     localStorage.setItem("cartaVista", "true");
     // vuelve al index principal
-    window.location.href = "../index.html";
+    window.location.href = "/index.html";
     });
   }
 })();

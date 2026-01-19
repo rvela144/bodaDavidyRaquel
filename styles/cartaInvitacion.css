@@ -352,3 +352,8 @@
 #btnContinuar{
   pointer-events: auto;
 }
+.paper-mini{
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: #9a9185;
+}

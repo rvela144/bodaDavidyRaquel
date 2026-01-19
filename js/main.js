@@ -88,7 +88,7 @@ if (preloader) {
 
   animLoader.destroy();
   //redireccionar al login o al main
-
+modal.show()
 /*if (localStorage.getItem("invitacion_ok") !== "1") {
   window.location.href = "/login/login.html";
 }else{
