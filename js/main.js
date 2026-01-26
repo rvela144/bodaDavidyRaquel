@@ -89,11 +89,7 @@ if (preloader) {
   animLoader.destroy();
   //redireccionar al login o al main
 modal.show()
-/*if (localStorage.getItem("invitacion_ok") !== "1") {
-  window.location.href = "/login/login.html";
-}else{
-   modal.show()
-}*/
+
 });
 
 
@@ -103,12 +99,12 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('reproductor-musica-fondo', {
     height: '0',            // “oculto” (ojo con Términos de Uso)
     width:  '0',
-    videoId: 'dQw4w9WgXcQ', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE ,12CEAlpGVXM 
+    videoId: 'u2ah9tWTkmk', // p.ej. 'u3y2y_bXZI0' IwzDYCbehwE ,12CEAlpGVXM 
     playerVars: {
       autoplay: 0,
         loop: 1,
         start: 0,
-        playlist:'dQw4w9WgXcQ'
+        playlist:'u2ah9tWTkmk'
     },
     events: {
        onReady: onPlayerReady
@@ -392,9 +388,9 @@ modal.hide();
     // Aceptar webp?
     // TODO:cambiar imagenes 
     if (support_format_webp()) {
-      var imageParallax = '../img/fotos/raquelDavid.jpeg';
+      var imageParallax = '../img/fotos/pedidaRaquelDavid.jpeg';
     } else {
-      var imageParallax = '../img/fotos/raquelDavid.jpeg';
+      var imageParallax = '../img/fotos/pedidaRaquelDavid.jpeg';
     }
 
   } else {
@@ -403,7 +399,7 @@ modal.hide();
     if (support_format_webp()) {
       var imageParallax = '../img/fotos/pedidaRaquelDavid.jpeg';
     } else {
-      var imageParallax = '../img/fotos/raquelDavid.jpeg';
+      var imageParallax = '../img/fotos/pedidaRaquelDavid.jpeg';
     }
 
   }

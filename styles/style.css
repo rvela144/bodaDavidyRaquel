@@ -190,7 +190,9 @@ section.portada{
   background-size: cover;
   color: #fff;
   position: relative;
+  
 }
+
 
 section.portada::before {
   content: "";
