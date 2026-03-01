@@ -1169,7 +1169,7 @@ section.footer .addeventatc span.nameBtn:hover{
   /* background-position-x: 55%; */
 }
 
-#modalAsistencia input, #modalAsistencia textarea{
+#modalAsistencia input , #modalAsistencia textarea{
   text-align: center;
   border: none;
   background: none;
@@ -1278,7 +1278,23 @@ section.footer .addeventatc span.nameBtn:hover{
 #modalAsistencia .form-control{
   font-size: 15px;
 }
+/* Radio base */
+#modalAsistencia .form-check-input {
+  border: 2px solid var(--color-1);
+  width: 18px;
+  height: 18px;
+}
 
+/* Cuando está seleccionado */
+#modalAsistencia .form-check-input:checked {
+  background-color: var(--color-1);  /* punto interior */
+  border-color: var(--color-1);      /* aro exterior */
+}
+
+/* Cuando recibe focus (clic) */
+#modalAsistencia .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(191,168,128,0.25);
+}
 /* ---------- */
 /* Banner para redirigir a la web */
 .banner-contacto-web{
