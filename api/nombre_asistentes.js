@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
       return res.status(500).json({ error: true, desc: "Falta GOOGLE_SCRIPT_URL_ASISTENCIA (o GOOGLE_SCRIPT_URL) en Vercel" });
     }
 
-    
+       const { nombre,apellidos,asiste, alergenos } = req.body || {};
     console.log("BODY:", req.body);
 
     if (asiste !== "Si" && asiste !== "No") {
