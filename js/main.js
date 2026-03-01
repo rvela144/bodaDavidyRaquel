@@ -908,8 +908,8 @@ document.body.addEventListener("click", async function (e) {
 });
 //Cerrar modal asistencia
 //funcion para cerrar sugerir cancion 
-/*document.body.addEventListener("click", function (e) {
-  const btn = e.target.closest("#cerrarModalAsistencia");
+document.body.addEventListener("click", function (e) {
+  const btn = e.target.closest("#cerrarAsistencia");
   if (!btn) return;
 
   e.preventDefault();
@@ -918,7 +918,7 @@ document.body.addEventListener("click", async function (e) {
   const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
 
   modal.hide();
-});*/
+});
 // enlace para abrir modal asistencia
 document.body.addEventListener("click", function (e) {
   const link = e.target.closest("a.confirmar-asistencia");
