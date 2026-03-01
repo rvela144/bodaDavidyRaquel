@@ -33,9 +33,8 @@ module.exports = async (req, res) => {
     const params = new URLSearchParams();
     params.set("nombre", n);
      params.set("apellidos", a);
-    params.set("asiste", asiste);
     params.set("alergenos", al);
-    params.set("evento", (evento || "").trim());
+    params.set("asiste", asiste);
 
     const r = await fetch(ENDPOINT, {
       method: "POST",

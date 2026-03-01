@@ -835,7 +835,7 @@ document.body.addEventListener("click", async function (e) {
     const r = await fetch("/api/nombre_asistentes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ asiste, nombre, apellidos, alergenos, evento })
+       body: JSON.stringify({ nombre,apellidos, alergenos,asiste })
     });
 
     const text = await r.text();
@@ -905,6 +905,31 @@ document.body.addEventListener("click", async function (e) {
     const form = document.getElementById("formAsistencia");
     if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">Error de conexión.</span>`);
   }
+});
+// enlace para abrir modal asistencia
+document.body.addEventListener("click", function (e) {
+  const link = e.target.closest("a.confirmar-asistencia");
+  if (!link) return;
+
+  e.preventDefault();
+
+  // borrar error previo
+  const error = document.getElementById("error-form");
+  if (error) error.remove();
+
+  // (opcional) leer data-evento
+  const evento = link.getAttribute("data-evento") || "";
+  // si quieres guardarlo en hidden, añade el input hidden en el modal (ver punto 3)
+  const inputEvento = document.getElementById("eventoAsistencia");
+  if (inputEvento) inputEvento.value = evento;
+
+  const modalEl = document.getElementById("modalAsistencia");
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl, {
+    backdrop: "static",
+    keyboard: false
+  });
+
+  modal.show();
 });
 /* Funciones y varialbes globales */
 
