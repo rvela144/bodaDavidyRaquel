@@ -770,7 +770,142 @@ document.body.addEventListener("click", function (e) {
 
   modal.hide();
 });
+function isOkAsistencia() {
+  const prevError = document.getElementById("error-form");
+  if (prevError) prevError.remove();
 
+  const modalEl = document.getElementById("modalAsistencia");
+  const formEl = document.getElementById("formAsistencia");
+  if (!modalEl || !formEl) return false;
+
+  const nombre = (document.getElementById("nombreAsistente")?.value || "").trim();
+  const apellidos = (document.getElementById("apellidosAsistente")?.value || "").trim();
+  const alergenos = (document.getElementById("alergenosAsistente")?.value || "").trim();
+
+  if (!nombre || !apellidos) {
+    formEl.insertAdjacentHTML("afterend", `<span id="error-form">Nombre y apellidos son obligatorios.</span>`);
+    return false;
+  }
+
+  if (nombre.length > 50) {
+    formEl.insertAdjacentHTML("afterend", `<span id="error-form">El nombre es demasiado largo.</span>`);
+    return false;
+  }
+  if (apellidos.length > 80) {
+    formEl.insertAdjacentHTML("afterend", `<span id="error-form">Los apellidos son demasiado largos.</span>`);
+    return false;
+  }
+  if (alergenos.length > 200) {
+    formEl.insertAdjacentHTML("afterend", `<span id="error-form">El texto de alérgenos es demasiado largo.</span>`);
+    return false;
+  }
+
+  return true;
+}
+
+document.body.addEventListener("click", async function (e) {
+  const btn = e.target.closest("#sendAsistencia");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  // Quitar error anterior
+  const prevError = document.getElementById("error-form");
+  if (prevError) prevError.remove();
+
+  // Leer campos (solo los que usas)
+  const asiste = document.querySelector('input[name="asistencia"]:checked')?.value || "Si";
+  const nombre = (document.getElementById("nombreAsistente")?.value || "").trim();
+  const apellidos = (document.getElementById("apellidosAsistente")?.value || "").trim();
+  const alergenos = (document.getElementById("alergenosAsistente")?.value || "").trim();
+  
+
+  // Validación (obligatorios SIEMPRE)
+  if (!nombre || !apellidos) {
+    const form = document.getElementById("formAsistencia");
+    if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">Nombre y apellidos son obligatorios.</span>`);
+    return;
+  }
+
+  // Loading
+  btn.textContent = (typeof lang_enviandoAsistencia !== "undefined" ? lang_enviandoAsistencia : "Enviando") + "...";
+  btn.disabled = true;
+
+  try {
+    const r = await fetch("/api/nombre_asistentes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ asiste, nombre, apellidos, alergenos, evento })
+    });
+
+    const text = await r.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch { data = { error: true, desc: "Respuesta inválida del servidor.", raw: text }; }
+
+    // Error servidor
+    if (data.error === true) {
+      btn.textContent = (typeof lang_confirmarAsistencia !== "undefined" ? lang_confirmarAsistencia : "Enviar");
+      btn.disabled = false;
+
+      const form = document.getElementById("formAsistencia");
+      if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">${data.desc || "Error"}</span>`);
+      return;
+    }
+
+    // Éxito
+    btn.textContent = (typeof lang_confirmarAsistencia !== "undefined" ? lang_confirmarAsistencia : "Enviar");
+    btn.disabled = false;
+
+    const form = document.getElementById("formAsistencia");
+    if (form) form.reset();
+
+    // UX éxito (opcional, igual que tu estilo)
+    const modalEl = document.getElementById("modalAsistencia");
+    if (!modalEl) return;
+
+    const elementos = modalEl.querySelectorAll(".formulario-content, .modal-footer, h5");
+    elementos.forEach(el => (el.style.display = "none"));
+
+    const modalBody = modalEl.querySelector(".modal-body");
+    if (modalBody) modalBody.classList.add("fix-height");
+
+    const msjContent = modalEl.querySelector(".msj-content");
+    const t1 = (typeof lang_asistenciaMsjExito_1 !== "undefined") ? lang_asistenciaMsjExito_1 : "¡Gracias!";
+    const t2 = (typeof lang_asistenciaMsjExito_2 !== "undefined") ? lang_asistenciaMsjExito_2 : "Hemos registrado tu respuesta.";
+    if (msjContent) {
+      msjContent.innerHTML = `<h5>${t1}</h5><p>${t2}</p>`;
+      msjContent.style.display = "block";
+    }
+
+    setTimeout(function () {
+      // Bootstrap 5
+      if (window.bootstrap?.Modal) {
+        const instance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+        instance.hide();
+      } else {
+        // Bootstrap 4 / jQuery fallback
+        if (window.$) $("#modalAsistencia").modal("hide");
+      }
+
+      elementos.forEach(el => (el.style.display = ""));
+      if (msjContent) {
+        msjContent.innerHTML = "";
+        msjContent.style.display = "none";
+      }
+      if (modalBody) modalBody.classList.remove("fix-height");
+    }, 4000);
+
+  } catch (err) {
+    console.error(err);
+
+    btn.textContent = (typeof lang_confirmarAsistencia !== "undefined" ? lang_confirmarAsistencia : "Enviar");
+    btn.disabled = false;
+
+    const form = document.getElementById("formAsistencia");
+    if (form) form.insertAdjacentHTML("afterend", `<span id="error-form">Error de conexión.</span>`);
+  }
+});
 /* Funciones y varialbes globales */
 
   // Funcion para validar formato url

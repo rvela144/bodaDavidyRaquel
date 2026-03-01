@@ -515,6 +515,75 @@
   </div>
 </div>
 
+<!-- Modal asistencia-->
+<div id="modalAsistencia" class="modal fade" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="img-top-modal d-flex justify-content-center align-items-start">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <img class="" src="img/iconos/img_circuloCeremonia.svg">
+      </div>
+
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar asistencia</h5>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="formulario-content">
+          <form id="formAsistencia" action="">
+
+            <div class="form-group d-flex justify-content-around custom-control custom-radio custom-control-inline">
+              <div class="form-check">
+                <input class="form-check-input custom-control-input"
+                       type="radio" name="asistencia" id="asiste_si" value="Si" checked>
+                <label class="form-check-label custom-control-label" for="asiste_si">
+                  ¡Sí! Confirmo.
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input custom-control-input"
+                       type="radio" name="asistencia" id="asiste_no" value="No">
+                <label class="form-check-label custom-control-label" for="asiste_no">
+                  No puedo :(
+                </label>
+              </div>
+            </div>
+
+            <!-- Siempre visibles -->
+            <div class="form-group">
+              <input type="text" class="form-control" id="nombreAsistente" name="nombre"
+                     placeholder="Nombre" maxlength="50">
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" id="apellidosAsistente" name="apellidos"
+                     placeholder="Apellidos" maxlength="80">
+            </div>
+
+            <div class="form-group">
+              <textarea id="alergenosAsistente" class="form-control" name="alergenos"
+                        rows="2" placeholder="Alergias / intolerancias (opcional)" maxlength="200"></textarea>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="msj-content d-flex flex-column justify-content-center" style="display:none;"></div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="sendAsistencia" class="boton">Enviar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 <section class="footer">
   <div class="container">
 
