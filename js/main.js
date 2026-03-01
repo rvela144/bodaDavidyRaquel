@@ -930,11 +930,6 @@ document.body.addEventListener("click", function (e) {
   const error = document.getElementById("error-form");
   if (error) error.remove();
 
-  // (opcional) leer data-evento
-  const evento = link.getAttribute("data-evento") || "";
-  // si quieres guardarlo en hidden, añade el input hidden en el modal (ver punto 3)
-  const inputEvento = document.getElementById("eventoAsistencia");
-  if (inputEvento) inputEvento.value = evento;
 
   const modalEl = document.getElementById("modalAsistencia");
   const modal = bootstrap.Modal.getOrCreateInstance(modalEl, {
